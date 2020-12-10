@@ -1,0 +1,142 @@
+# ************************************************************************
+# * This file maked by makmak Ver0.49                                    *
+# ************************************************************************
+
+CRTL			= makmak Ver0.39
+MAKSRC			= *.cpp *.c *.rc std/*.cpp std/*.c
+DEFINE			= -D_CRT_SECURE_NO_DEPRECATE -D_WIN32_WINNT=0x0400 -DLM_MAX=0x4000 -DEUC=0 -DNDEBUG
+USRINCLUDE		= 
+SYSINCLUDE		= 
+USRLIB			= 
+SYSLIB			= user32.lib gdi32.lib shell32.lib Comdlg32.lib
+ODIR			= o/
+AS				= ml
+BP				= bp386
+RC				= rc
+CC				= cl -D$(SUBSYSTEM) $(DEFINE)
+LD				= cl
+AOPT			= -nologo -coff
+BOPT			= 
+COPT			= -nologo -MT -W4 -Ox $(USRINCLUDE) $(SYSINCLUDE)
+LOPT			= -nologo -MT
+LIBS			= -link -SUBSYSTEM:$(SUBSYSTEM) $(USRLIB) $(SYSLIB)
+ASM				= .asm
+BPP				= .b86
+OBJ				= .obj
+FE				= -Fe
+FO				= -Foo/
+RCO				= -Foo/
+SUBSYSTEM		= WINDOWS
+TARGET			= $(APP).exe
+APP				= xed
+TOOLS			= 
+
+default: $(TARGET)
+
+FILEDB_H		= std/filedb.h std/db2.h
+CLPBRD_H		= std/clpbrd.h std/db2.h
+FILTERDB_H		= std/filterdb.h std/db2.h
+XSEL_H			= std/xsel.h std/db2.h
+MAIN_H			= main.h $(XSEL_H) std/db2.h std/lm.h std/mkey.h
+TXTDL_H			= std/txtdl.h std/db2.h
+OPT_H			= std/opt.h std/db2.h
+READDB_H		= std/readdb.h std/db2.h
+
+OFIL			= o/cmdprc$(OBJ) o/ctx$(OBJ) o/display$(OBJ) o/help$(OBJ) o/lin$(OBJ) o/linedt$(OBJ) o/replace$(OBJ) o/xed$(OBJ) o/xedmain$(OBJ) o/xed.res o/std_opt$(OBJ) o/std_about2$(OBJ) o/std_clp3$(OBJ) o/std_clpbrd$(OBJ) o/std_db2$(OBJ) o/std_envcnv3$(OBJ) o/std_eval$(OBJ) o/std_evalf$(OBJ) o/std_exepath2$(OBJ) o/std_filedb$(OBJ) o/std_filterdb$(OBJ) o/std_getfmt2$(OBJ) o/std_lin2arg2$(OBJ) o/std_lm$(OBJ) o/std_mkey$(OBJ) o/std_path2$(OBJ) o/std_readdb$(OBJ) o/std_search2$(OBJ) o/std_tagparse$(OBJ) o/std_txtdl$(OBJ) o/std_xsel$(OBJ)
+
+$(TARGET): $(OFIL)
+	$(LD) $(LOPT) $(FE)$(TARGET) $(OFIL) $(LIBS)
+
+o/cmdprc$(OBJ): cmdprc.cpp $(FILEDB_H) $(CLPBRD_H) $(FILTERDB_H) std/tagparse.h std/envcnv3.h std/eval.h std/evalf.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)cmdprc$(OBJ) -c cmdprc.cpp
+
+o/ctx$(OBJ): ctx.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)ctx$(OBJ) -c ctx.cpp
+
+o/display$(OBJ): display.cpp $(TXTDL_H) std/clp3.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)display$(OBJ) -c display.cpp
+
+o/help$(OBJ): help.cpp $(TXTDL_H) $(MAIN_H)
+	$(CC) $(COPT) $(FO)help$(OBJ) -c help.cpp
+
+o/lin$(OBJ): lin.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)lin$(OBJ) -c lin.cpp
+
+o/linedt$(OBJ): linedt.cpp $(TXTDL_H) $(CLPBRD_H) $(MAIN_H)
+	$(CC) $(COPT) $(FO)linedt$(OBJ) -c linedt.cpp
+
+o/replace$(OBJ): replace.cpp std/search2.h std/lm.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)replace$(OBJ) -c replace.cpp
+
+o/xed$(OBJ): xed.cpp std/about2.h $(OPT_H) $(FILEDB_H) $(CLPBRD_H) resource.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)xed$(OBJ) -c xed.cpp
+
+o/xedmain$(OBJ): xedmain.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)xedmain$(OBJ) -c xedmain.cpp
+
+o/xed.res: xed.rc resource.h
+	$(RC) $(RCO)xed.res xed.rc
+
+o/std_opt$(OBJ): std/opt.cpp std/path2.h $(OPT_H)
+	$(CC) $(COPT) $(FO)std_opt$(OBJ) -c std/opt.cpp
+
+o/std_about2$(OBJ): std/about2.c std/about2.h
+	$(CC) $(COPT) $(FO)std_about2$(OBJ) -c std/about2.c
+
+o/std_clp3$(OBJ): std/clp3.c std/clp3.h
+	$(CC) $(COPT) $(FO)std_clp3$(OBJ) -c std/clp3.c
+
+o/std_clpbrd$(OBJ): std/clpbrd.c $(CLPBRD_H)
+	$(CC) $(COPT) $(FO)std_clpbrd$(OBJ) -c std/clpbrd.c
+
+o/std_db2$(OBJ): std/db2.c std/db2.h
+	$(CC) $(COPT) $(FO)std_db2$(OBJ) -c std/db2.c
+
+o/std_envcnv3$(OBJ): std/envcnv3.c std/envcnv3.h
+	$(CC) $(COPT) $(FO)std_envcnv3$(OBJ) -c std/envcnv3.c
+
+o/std_eval$(OBJ): std/eval.c std/eval.h
+	$(CC) $(COPT) $(FO)std_eval$(OBJ) -c std/eval.c
+
+o/std_evalf$(OBJ): std/evalf.c std/evalf.h
+	$(CC) $(COPT) $(FO)std_evalf$(OBJ) -c std/evalf.c
+
+o/std_exepath2$(OBJ): std/exepath2.c std/exepath2.h
+	$(CC) $(COPT) $(FO)std_exepath2$(OBJ) -c std/exepath2.c
+
+o/std_filedb$(OBJ): std/filedb.c std/path2.h $(FILEDB_H)
+	$(CC) $(COPT) $(FO)std_filedb$(OBJ) -c std/filedb.c
+
+o/std_filterdb$(OBJ): std/filterdb.c std/lin2arg2.h $(READDB_H) $(FILTERDB_H) std/exepath2.h
+	$(CC) $(COPT) $(FO)std_filterdb$(OBJ) -c std/filterdb.c
+
+o/std_getfmt2$(OBJ): std/getfmt2.c std/db2.h std/getfmt2.h
+	$(CC) $(COPT) $(FO)std_getfmt2$(OBJ) -c std/getfmt2.c
+
+o/std_lin2arg2$(OBJ): std/lin2arg2.c std/db2.h std/lin2arg2.h
+	$(CC) $(COPT) $(FO)std_lin2arg2$(OBJ) -c std/lin2arg2.c
+
+o/std_lm$(OBJ): std/lm.c std/lm.h
+	$(CC) $(COPT) $(FO)std_lm$(OBJ) -c std/lm.c
+
+o/std_mkey$(OBJ): std/mkey.c std/db2.h std/mkey.h
+	$(CC) $(COPT) $(FO)std_mkey$(OBJ) -c std/mkey.c
+
+o/std_path2$(OBJ): std/path2.c std/path2.h
+	$(CC) $(COPT) $(FO)std_path2$(OBJ) -c std/path2.c
+
+o/std_readdb$(OBJ): std/readdb.c $(READDB_H)
+	$(CC) $(COPT) $(FO)std_readdb$(OBJ) -c std/readdb.c
+
+o/std_search2$(OBJ): std/search2.c std/search2.h
+	$(CC) $(COPT) $(FO)std_search2$(OBJ) -c std/search2.c
+
+o/std_tagparse$(OBJ): std/tagparse.c std/getfmt2.h std/path2.h std/tagparse.h
+	$(CC) $(COPT) $(FO)std_tagparse$(OBJ) -c std/tagparse.c
+
+o/std_txtdl$(OBJ): std/txtdl.c $(TXTDL_H)
+	$(CC) $(COPT) $(FO)std_txtdl$(OBJ) -c std/txtdl.c
+
+o/std_xsel$(OBJ): std/xsel.c $(READDB_H) $(XSEL_H)
+	$(CC) $(COPT) $(FO)std_xsel$(OBJ) -c std/xsel.c
+

@@ -1,0 +1,136 @@
+# ************************************************************************
+# * This file maked by makmak Ver0.49                                    *
+# ************************************************************************
+
+CRTL			= makmak Ver0.49
+MAKSRC			= ../*.c ../*.cpp ../std/*.c ../std/*.cpp
+DEFINE			= -DCURSES -DEUC=1 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+USRINCLUDE		= 
+SYSINCLUDE		= 
+USRLIB			= 
+SYSLIB			= -lcurses -lstdc++
+ODIR			= o/
+TOOLS			= 
+AS				= gcc
+BP				= bp386
+CC				= $(TOOLS)gcc $(DEFINE)
+LD				= $(TOOLS)gcc
+AOPT			= 
+BOPT			= 
+COPT			= -O2 -Wall -Wno-multichar $(USRINCLUDE) $(SYSINCLUDE)
+LOPT			= -s
+LIBS			= $(USRLIB) $(SYSLIB)
+ASM				= .s
+BPP				= .b86
+OBJ				= .o
+FE				= -o ./
+FO				= -o o/
+TARGET			= $(APP)
+APP				= ced
+
+default: $(TARGET)
+
+FILEDB_H		= ../std/filedb.h ../std/db2.h
+CLPBRD_H		= ../std/clpbrd.h ../std/db2.h
+FILTERDB_H		= ../std/filterdb.h ../std/db2.h
+XSEL_H			= ../std/xsel.h ../std/db2.h
+MAIN_H			= ../main.h $(XSEL_H) ../std/db2.h ../std/lm.h ../std/mkey.h
+TXTDL_H			= ../std/txtdl.h ../std/db2.h
+OPT_H			= ../std/opt.h ../std/db2.h
+READDB_H		= ../std/readdb.h ../std/db2.h
+
+OFIL			= o/dd_cmdprc$(OBJ) o/dd_ctx$(OBJ) o/dd_display$(OBJ) o/dd_help$(OBJ) o/dd_lin$(OBJ) o/dd_linedt$(OBJ) o/dd_replace$(OBJ) o/dd_xed$(OBJ) o/dd_xedmain$(OBJ) o/dd_std_about2$(OBJ) o/dd_std_clp3$(OBJ) o/dd_std_clpbrd$(OBJ) o/dd_std_db2$(OBJ) o/dd_std_envcnv3$(OBJ) o/dd_std_eval$(OBJ) o/dd_std_evalf$(OBJ) o/dd_std_exepath2$(OBJ) o/dd_std_filedb$(OBJ) o/dd_std_filterdb$(OBJ) o/dd_std_getfmt2$(OBJ) o/dd_std_lin2arg2$(OBJ) o/dd_std_lm$(OBJ) o/dd_std_mkey$(OBJ) o/dd_std_path2$(OBJ) o/dd_std_readdb$(OBJ) o/dd_std_search2$(OBJ) o/dd_std_tagparse$(OBJ) o/dd_std_txtdl$(OBJ) o/dd_std_xsel$(OBJ) o/dd_std_opt$(OBJ)
+
+$(TARGET): $(OFIL)
+	$(LD) $(LOPT) $(FE)$(TARGET) $(OFIL) $(LIBS)
+
+o/dd_cmdprc$(OBJ): ../cmdprc.cpp $(FILEDB_H) $(CLPBRD_H) $(FILTERDB_H) ../std/tagparse.h ../std/envcnv3.h ../std/eval.h ../std/evalf.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_cmdprc$(OBJ) -c ../cmdprc.cpp
+
+o/dd_ctx$(OBJ): ../ctx.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_ctx$(OBJ) -c ../ctx.cpp
+
+o/dd_display$(OBJ): ../display.cpp $(TXTDL_H) ../std/clp3.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_display$(OBJ) -c ../display.cpp
+
+o/dd_help$(OBJ): ../help.cpp $(TXTDL_H) $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_help$(OBJ) -c ../help.cpp
+
+o/dd_lin$(OBJ): ../lin.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_lin$(OBJ) -c ../lin.cpp
+
+o/dd_linedt$(OBJ): ../linedt.cpp $(TXTDL_H) $(CLPBRD_H) $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_linedt$(OBJ) -c ../linedt.cpp
+
+o/dd_replace$(OBJ): ../replace.cpp ../std/search2.h ../std/lm.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_replace$(OBJ) -c ../replace.cpp
+
+o/dd_xed$(OBJ): ../xed.cpp ../std/about2.h $(OPT_H) $(FILEDB_H) $(CLPBRD_H) ../resource.h $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_xed$(OBJ) -c ../xed.cpp
+
+o/dd_xedmain$(OBJ): ../xedmain.cpp $(MAIN_H)
+	$(CC) $(COPT) $(FO)dd_xedmain$(OBJ) -c ../xedmain.cpp
+
+o/dd_std_about2$(OBJ): ../std/about2.c ../std/about2.h
+	$(CC) $(COPT) $(FO)dd_std_about2$(OBJ) -c ../std/about2.c
+
+o/dd_std_clp3$(OBJ): ../std/clp3.c ../std/clp3.h
+	$(CC) $(COPT) $(FO)dd_std_clp3$(OBJ) -c ../std/clp3.c
+
+o/dd_std_clpbrd$(OBJ): ../std/clpbrd.c $(CLPBRD_H)
+	$(CC) $(COPT) $(FO)dd_std_clpbrd$(OBJ) -c ../std/clpbrd.c
+
+o/dd_std_db2$(OBJ): ../std/db2.c ../std/db2.h
+	$(CC) $(COPT) $(FO)dd_std_db2$(OBJ) -c ../std/db2.c
+
+o/dd_std_envcnv3$(OBJ): ../std/envcnv3.c ../std/envcnv3.h
+	$(CC) $(COPT) $(FO)dd_std_envcnv3$(OBJ) -c ../std/envcnv3.c
+
+o/dd_std_eval$(OBJ): ../std/eval.c ../std/eval.h
+	$(CC) $(COPT) $(FO)dd_std_eval$(OBJ) -c ../std/eval.c
+
+o/dd_std_evalf$(OBJ): ../std/evalf.c ../std/evalf.h
+	$(CC) $(COPT) $(FO)dd_std_evalf$(OBJ) -c ../std/evalf.c
+
+o/dd_std_exepath2$(OBJ): ../std/exepath2.c ../std/exepath2.h
+	$(CC) $(COPT) $(FO)dd_std_exepath2$(OBJ) -c ../std/exepath2.c
+
+o/dd_std_filedb$(OBJ): ../std/filedb.c ../std/path2.h $(FILEDB_H)
+	$(CC) $(COPT) $(FO)dd_std_filedb$(OBJ) -c ../std/filedb.c
+
+o/dd_std_filterdb$(OBJ): ../std/filterdb.c ../std/lin2arg2.h $(READDB_H) $(FILTERDB_H) ../std/exepath2.h
+	$(CC) $(COPT) $(FO)dd_std_filterdb$(OBJ) -c ../std/filterdb.c
+
+o/dd_std_getfmt2$(OBJ): ../std/getfmt2.c ../std/db2.h ../std/getfmt2.h
+	$(CC) $(COPT) $(FO)dd_std_getfmt2$(OBJ) -c ../std/getfmt2.c
+
+o/dd_std_lin2arg2$(OBJ): ../std/lin2arg2.c ../std/db2.h ../std/lin2arg2.h
+	$(CC) $(COPT) $(FO)dd_std_lin2arg2$(OBJ) -c ../std/lin2arg2.c
+
+o/dd_std_lm$(OBJ): ../std/lm.c ../std/lm.h
+	$(CC) $(COPT) $(FO)dd_std_lm$(OBJ) -c ../std/lm.c
+
+o/dd_std_mkey$(OBJ): ../std/mkey.c ../std/db2.h ../std/mkey.h
+	$(CC) $(COPT) $(FO)dd_std_mkey$(OBJ) -c ../std/mkey.c
+
+o/dd_std_path2$(OBJ): ../std/path2.c ../std/path2.h
+	$(CC) $(COPT) $(FO)dd_std_path2$(OBJ) -c ../std/path2.c
+
+o/dd_std_readdb$(OBJ): ../std/readdb.c $(READDB_H)
+	$(CC) $(COPT) $(FO)dd_std_readdb$(OBJ) -c ../std/readdb.c
+
+o/dd_std_search2$(OBJ): ../std/search2.c ../std/search2.h
+	$(CC) $(COPT) $(FO)dd_std_search2$(OBJ) -c ../std/search2.c
+
+o/dd_std_tagparse$(OBJ): ../std/tagparse.c ../std/getfmt2.h ../std/path2.h ../std/tagparse.h
+	$(CC) $(COPT) $(FO)dd_std_tagparse$(OBJ) -c ../std/tagparse.c
+
+o/dd_std_txtdl$(OBJ): ../std/txtdl.c $(TXTDL_H)
+	$(CC) $(COPT) $(FO)dd_std_txtdl$(OBJ) -c ../std/txtdl.c
+
+o/dd_std_xsel$(OBJ): ../std/xsel.c $(READDB_H) $(XSEL_H)
+	$(CC) $(COPT) $(FO)dd_std_xsel$(OBJ) -c ../std/xsel.c
+
+o/dd_std_opt$(OBJ): ../std/opt.cpp ../std/path2.h $(OPT_H)
+	$(CC) $(COPT) $(FO)dd_std_opt$(OBJ) -c ../std/opt.cpp
+

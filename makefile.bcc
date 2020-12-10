@@ -1,0 +1,134 @@
+# ************************************************************************
+# * This file maked by makbcc Ver0.03                                    *
+# ************************************************************************
+
+CRTL			= makbcc Ver0.02
+MAKSRC			= *.c *.s *.cpp *.rc std/*.c std/*.s std/*.cpp
+DEFINE			= -D__MT__ -DLM_MAX=0x4000 -DCONSOLE
+USRINCLUDE		= 
+SYSINCLUDE		= 
+CC				= bcc32
+AS				= bcc32
+BP				= bpp86
+RC				= brc32
+LK				= ilink32
+ASM				= .asm
+ASOPT			= $(CPUOPT) $(BCCOPT) $(DEFINE)
+CPUOPT			= -O1
+BCCOPT			= -no -K -d -q -w-pia -w-ccc -w-rch -W
+LKEND			= 
+CCOPT			= $(CPUOPT) $(BCCOPT) $(DEFINE) $(USRINCLUDE) $(SYSINCLUDE)
+LKOPT			= -Io -Gn -x -q -Rr
+CONLIBS			= -ap c0x32.obj import32.lib cw32mt.lib
+WINLIBS			= -aa c0w32.obj import32.lib cw32mt.lib
+LIBS			= $(CONLIBS)
+TARGET			= $(APP).exe
+APP				= xed
+
+default: $(TARGET)
+
+FILEDB_H		= std/filedb.h std/db2.h
+CLPBRD_H		= std/clpbrd.h std/db2.h
+FILTERDB_H		= std/filterdb.h std/db2.h
+XSEL_H			= std/xsel.h std/db2.h
+MAIN_H			= main.h $(XSEL_H) std/db2.h std/lm.h std/mkey.h
+TXTDL_H			= std/txtdl.h std/db2.h
+OPT_H			= std/opt.h std/db2.h
+READDB_H		= std/readdb.h std/db2.h
+
+OFIL			= o\cmdprc.obj o\ctx.obj o\display.obj o\help.obj o\lin.obj o\linedt.obj o\replace.obj o\xed.obj o\xedmain.obj o\about2.obj o\clp3.obj o\clpbrd.obj o\db2.obj o\envcnv3.obj o\eval.obj o\evalf.obj o\exepath2.obj o\filedb.obj o\filterdb.obj o\getfmt2.obj o\lin2arg2.obj o\lm.obj o\mkey.obj o\path2.obj o\readdb.obj o\search2.obj o\tagparse.obj o\txtdl.obj o\xsel.obj o\opt.obj
+
+$(TARGET): $(OFIL) $(LKFILE)
+	$(LK) $(LKOPT) $(OFIL), $(TARGET), , $(LIBS) $(LKEND)
+	$(RC) xed.rc $(TARGET)
+
+o\cmdprc.obj: cmdprc.cpp $(FILEDB_H) $(CLPBRD_H) $(FILTERDB_H) std/tagparse.h std/envcnv3.h std/eval.h std/evalf.h $(MAIN_H)
+	$(CC) $(CCOPT) -oo\cmdprc.obj -c cmdprc.cpp
+
+o\ctx.obj: ctx.cpp $(MAIN_H)
+	$(CC) $(CCOPT) -oo\ctx.obj -c ctx.cpp
+
+o\display.obj: display.cpp $(TXTDL_H) std/clp3.h $(MAIN_H)
+	$(CC) $(CCOPT) -oo\display.obj -c display.cpp
+
+o\help.obj: help.cpp $(TXTDL_H) $(MAIN_H)
+	$(CC) $(CCOPT) -oo\help.obj -c help.cpp
+
+o\lin.obj: lin.cpp $(MAIN_H)
+	$(CC) $(CCOPT) -oo\lin.obj -c lin.cpp
+
+o\linedt.obj: linedt.cpp $(TXTDL_H) $(CLPBRD_H) $(MAIN_H)
+	$(CC) $(CCOPT) -oo\linedt.obj -c linedt.cpp
+
+o\replace.obj: replace.cpp std/search2.h std/lm.h $(MAIN_H)
+	$(CC) $(CCOPT) -oo\replace.obj -c replace.cpp
+
+o\xed.obj: xed.cpp std/about2.h $(OPT_H) $(FILEDB_H) $(CLPBRD_H) resource.h $(MAIN_H)
+	$(CC) $(CCOPT) -oo\xed.obj -c xed.cpp
+
+o\xedmain.obj: xedmain.cpp $(MAIN_H)
+	$(CC) $(CCOPT) -oo\xedmain.obj -c xedmain.cpp
+
+o\about2.obj: std/about2.c std/about2.h
+	$(CC) $(CCOPT) -oo\about2.obj -c std/about2.c
+
+o\clp3.obj: std/clp3.c std/clp3.h
+	$(CC) $(CCOPT) -oo\clp3.obj -c std/clp3.c
+
+o\clpbrd.obj: std/clpbrd.c $(CLPBRD_H)
+	$(CC) $(CCOPT) -oo\clpbrd.obj -c std/clpbrd.c
+
+o\db2.obj: std/db2.c std/db2.h
+	$(CC) $(CCOPT) -oo\db2.obj -c std/db2.c
+
+o\envcnv3.obj: std/envcnv3.c std/envcnv3.h
+	$(CC) $(CCOPT) -oo\envcnv3.obj -c std/envcnv3.c
+
+o\eval.obj: std/eval.c std/eval.h
+	$(CC) $(CCOPT) -oo\eval.obj -c std/eval.c
+
+o\evalf.obj: std/evalf.c std/evalf.h
+	$(CC) $(CCOPT) -oo\evalf.obj -c std/evalf.c
+
+o\exepath2.obj: std/exepath2.c std/exepath2.h
+	$(CC) $(CCOPT) -oo\exepath2.obj -c std/exepath2.c
+
+o\filedb.obj: std/filedb.c std/path2.h $(FILEDB_H)
+	$(CC) $(CCOPT) -oo\filedb.obj -c std/filedb.c
+
+o\filterdb.obj: std/filterdb.c std/lin2arg2.h $(READDB_H) $(FILTERDB_H) std/exepath2.h
+	$(CC) $(CCOPT) -oo\filterdb.obj -c std/filterdb.c
+
+o\getfmt2.obj: std/getfmt2.c std/db2.h std/getfmt2.h
+	$(CC) $(CCOPT) -oo\getfmt2.obj -c std/getfmt2.c
+
+o\lin2arg2.obj: std/lin2arg2.c std/lin2arg2.h
+	$(CC) $(CCOPT) -oo\lin2arg2.obj -c std/lin2arg2.c
+
+o\lm.obj: std/lm.c std/lm.h
+	$(CC) $(CCOPT) -oo\lm.obj -c std/lm.c
+
+o\mkey.obj: std/mkey.c std/db2.h std/mkey.h
+	$(CC) $(CCOPT) -oo\mkey.obj -c std/mkey.c
+
+o\path2.obj: std/path2.c std/path2.h
+	$(CC) $(CCOPT) -oo\path2.obj -c std/path2.c
+
+o\readdb.obj: std/readdb.c $(READDB_H)
+	$(CC) $(CCOPT) -oo\readdb.obj -c std/readdb.c
+
+o\search2.obj: std/search2.c std/search2.h
+	$(CC) $(CCOPT) -oo\search2.obj -c std/search2.c
+
+o\tagparse.obj: std/tagparse.c std/getfmt2.h std/path2.h std/tagparse.h
+	$(CC) $(CCOPT) -oo\tagparse.obj -c std/tagparse.c
+
+o\txtdl.obj: std/txtdl.c $(TXTDL_H)
+	$(CC) $(CCOPT) -oo\txtdl.obj -c std/txtdl.c
+
+o\xsel.obj: std/xsel.c $(READDB_H) $(XSEL_H)
+	$(CC) $(CCOPT) -oo\xsel.obj -c std/xsel.c
+
+o\opt.obj: std/opt.cpp std/path2.h $(OPT_H)
+	$(CC) $(CCOPT) -oo\opt.obj -c std/opt.cpp
+
