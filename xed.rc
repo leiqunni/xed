@@ -16,7 +16,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ⌠З√{▄Й resources
+// Ф≈╔Ф°╛Х╙· resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
 #ifdef _WIN32
@@ -40,17 +40,17 @@ IDI_CONTOUR             ICON    DISCARDABLE     "xed.ico"
 
 IDC_CONTOUR MENU DISCARDABLE 
 BEGIN
-    POPUP "л╖╡ы(&F)"
+    POPUP "Ц┐∙Ц┌║Ц┌╓Ц┐╚(&F)"
     BEGIN
-        MENUITEM "╠лъь╧╟╪╝щ┌л▐I≈╧(&X)",         IDM_EXIT
+        MENUITEM "Ц┌╒Ц┐≈Ц┐╙Ц┌╠Ц┐╪Ц┌╥Ц┐╖Ц┐ЁЦ│╝Г╣┌Д╨├(&X)",         IDM_EXIT
     END
-    POPUP "▐▒▌╝"
+    POPUP "Ф⌡╦Е╪▐"
     BEGIN
-        MENUITEM "┐t┐H┐⌠┐g",                    ID_FONT
+        MENUITEM "Ц┐∙Ц┌╘Ц┐ЁЦ┐┬",                    ID_FONT
     END
-    POPUP "мылъ(&H)"
+    POPUP "Ц┐≤Ц┐╚Ц┐≈(&H)"
     BEGIN
-        MENUITEM "йч╟╪ч╝щ▐Н∙Я(&A) ...",         IDM_ABOUT
+        MENUITEM "Ц┐░Ц┐╪Ц┌╦Ц┐╖Ц┐ЁФ┐┘Е═╠(&A) ...",         IDM_ABOUT
     END
 END
 
@@ -74,7 +74,7 @@ END
 
 IDD_ABOUTBOX DIALOG DISCARDABLE  22, 17, 230, 75
 STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
-CAPTION "йч╟╪ч╝щ▐Н∙Я"
+CAPTION "Ц┐░Ц┐╪Ц┌╦Ц┐╖Ц┐ЁФ┐┘Е═╠"
 FONT 8, "System"
 BEGIN
     ICON            IDI_CONTOUR,IDC_MYICON,14,9,20,20
@@ -124,7 +124,7 @@ BEGIN
     IDC_CONTOUR             "XED"
 END
 
-#endif    // ⌠З√{▄Й resources
+#endif    // Ф≈╔Ф°╛Х╙· resources
 /////////////////////////////////////////////////////////////////////////////
 
 

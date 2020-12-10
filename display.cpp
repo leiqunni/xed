@@ -1,56 +1,56 @@
 /************************************************************************/
 /*																		*/
-/*	•\¦						by H.Watanabe							*/
-/*	Ver1.00	2009/04/04 13:49:05	ì¬ŠJn								*/
+/*	è¡¨ç¤º						by H.Watanabe							*/
+/*	Ver1.00	2009/04/04 13:49:05	ä½œæˆé–‹å§‹								*/
 /*																		*/
 /************************************************************************/
 
-#	include	<assert.h>													/* ƒAƒT[ƒVƒ‡ƒ“*/
-#	include	<stdio.h>													/* •W€“üo—ÍŠÖ”*/
-#	include	<string.h>													/* •W€•¶š—ñŠÖ”*/
-#	include	"std/txtdl.h"												/* ƒeƒLƒXƒgƒGƒfƒBƒ^‚Ì‚½‚ß‚ÌƒfƒBƒXƒvƒŒƒCƒŠƒXƒg•ÏŠ·*/
-#	include	"std/clp3.h"												/* ƒNƒŠƒbƒsƒ“ƒO*/
-#	include	"main.h"													/* ƒƒCƒ“ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹*/
+#	include	<assert.h>													/* ã‚¢ã‚µãƒ¼ã‚·ãƒ§ãƒ³*/
+#	include	<stdio.h>													/* æ¨™æº–å…¥å‡ºåŠ›é–¢æ•°*/
+#	include	<string.h>													/* æ¨™æº–æ–‡å­—åˆ—é–¢æ•°*/
+#	include	"std/txtdl.h"												/* ãƒ†ã‚­ã‚¹ãƒˆã‚¨ãƒ‡ã‚£ã‚¿ã®ãŸã‚ã®ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒªã‚¹ãƒˆå¤‰æ›*/
+#	include	"std/clp3.h"												/* ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°*/
+#	include	"main.h"													/* ãƒ¡ã‚¤ãƒ³ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«*/
 
 /************************************************************************/
-/*	ƒ[ƒJƒ‹’è‹`														*/
+/*	ãƒ­ãƒ¼ã‚«ãƒ«å®šç¾©														*/
 /************************************************************************/
 
-#	define	MOD_XXC			0											/* ƒ‚[ƒh*/
+#	define	MOD_XXC			0											/* ãƒ¢ãƒ¼ãƒ‰*/
 #	define	MOD_YYC			0
 #	define	MOD_XXD			25
 #	define	MOD_YYD			1
 
-#	define	MSG_XXC			25											/* ƒƒbƒZ[ƒW*/
+#	define	MSG_XXC			25											/* ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸*/
 #	define	MSG_YYC			0
 #	define	MSG_XXD			23
 #	define	MSG_YYD			1
 
-#	define	FIL_XXC			48											/* ƒtƒ@ƒCƒ‹–¼*/
+#	define	FIL_XXC			48											/* ãƒ•ã‚¡ã‚¤ãƒ«å*/
 #	define	FIL_YYC			0
 #	define	FIL_XXD			23
 #	define	FIL_YYD			1
 
-	static stDB				*g_xcoldbp;									// XColor •ÏŠ·DB
+	static stDB				*g_xcoldbp;									// XColor å¤‰æ›DB
 
 /************************************************************************/
-/*	ƒfƒBƒXƒvƒŒƒCƒXƒ^[ƒgƒAƒbƒv											*/
+/*	ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—											*/
 /************************************************************************/
 
 void	displayStartUp(void){
-	g_xcoldbp=dbOpen( sizeof(unsigned long), sizeof(stXCOL), 256, 4096 );		// XColor •ÏŠ·DBƒI[ƒvƒ“
+	g_xcoldbp=dbOpen( sizeof(unsigned long), sizeof(stXCOL), 256, 4096 );		// XColor å¤‰æ›DBã‚ªãƒ¼ãƒ—ãƒ³
 }
 
 /************************************************************************/
-/*	ƒfƒBƒXƒvƒŒƒCƒNƒŠ[ƒ“ƒiƒbƒv											*/
+/*	ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¯ãƒªãƒ¼ãƒ³ãƒŠãƒƒãƒ—											*/
 /************************************************************************/
 
 void	displayCleanUp(void){
-	dbClose( g_xcoldbp );												// XColor •ÏŠ·DBƒNƒ[ƒY
+	dbClose( g_xcoldbp );												// XColor å¤‰æ›DBã‚¯ãƒ­ãƒ¼ã‚º
 }
 
 /************************************************************************/
-/*	‚q‚f‚a‚©‚ç‚wƒJƒ‰[‚É•ÏŠ·‚·‚é										*/
+/*	ï¼²ï¼§ï¼¢ã‹ã‚‰ï¼¸ã‚«ãƒ©ãƒ¼ã«å¤‰æ›ã™ã‚‹										*/
 /************************************************************************/
 
 #	ifndef	_WIN32
@@ -58,15 +58,15 @@ void	displayCleanUp(void){
 
 stXCOL	*colorref2xcolor( unsigned long colorref ){
 
-	stXCOL	*xcolp;														// XColor \‘¢‘Ì
-	char	tmpa[256];													// ƒeƒ“ƒ|ƒ‰ƒŠƒoƒbƒtƒ@
+	stXCOL	*xcolp;														// XColor æ§‹é€ ä½“
+	char	tmpa[256];													// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒãƒƒãƒ•ã‚¡
 
-	xcolp=(stXCOL*)dbSch( g_xcoldbp, &colorref );						// ŒŸõ
-	if( !xcolp ){														// –¢“o˜^
-		xcolp=(stXCOL*)dbAlc( g_xcoldbp, &colorref, 0 );				// “o˜^
-		sprintf( tmpa, "#%06x", (int)colorref );						// •¶š—ñ‰»
-		XParseColor( g_dpyp, g_cmap, tmpa, &xcolp->col );				// ƒJƒ‰[‰ğÍ
-		XAllocColor( g_dpyp, g_cmap, &xcolp->col );						// ƒJƒ‰[“o˜^
+	xcolp=(stXCOL*)dbSch( g_xcoldbp, &colorref );						// æ¤œç´¢
+	if( !xcolp ){														// æœªç™»éŒ²
+		xcolp=(stXCOL*)dbAlc( g_xcoldbp, &colorref, 0 );				// ç™»éŒ²
+		sprintf( tmpa, "#%06x", (int)colorref );						// æ–‡å­—åˆ—åŒ–
+		XParseColor( g_dpyp, g_cmap, tmpa, &xcolp->col );				// ã‚«ãƒ©ãƒ¼è§£æ
+		XAllocColor( g_dpyp, g_cmap, &xcolp->col );						// ã‚«ãƒ©ãƒ¼ç™»éŒ²
 	}
 	return( xcolp );
 }
@@ -75,21 +75,21 @@ stXCOL	*colorref2xcolor( unsigned long colorref ){
 #	endif
 
 /************************************************************************/
-/*	ƒ‰ƒCƒ“•`‰æ															*/
+/*	ãƒ©ã‚¤ãƒ³æç”»															*/
 /************************************************************************/
 
 static void	lineOnTxt( int x1, int y1, int x2, int y2, unsigned long colorref ){
 
 #	ifdef	_WIN32
 
-	HPEN	hpen;														// ƒyƒ“ƒnƒ“ƒhƒ‹
+	HPEN	hpen;														// ãƒšãƒ³ãƒãƒ³ãƒ‰ãƒ«
 
 	if( clpLin( &x1, &y1, &x2, &y2, x1, y1, x2, y2, 0, 0, g_txxd*g_fxw, g_tyyd*g_fyw ) ){
-		hpen=CreatePen( PS_SOLID, 0, colorref );						// ƒyƒ“ì¬
-		SelectObject(	g_hdc, hpen );									// ƒyƒ“ƒZƒŒƒNƒg
-		MoveToEx(		g_hdc, x1+g_txxc*g_fxw, y1+g_tyyc*g_fyw, 0 );	// n“_w’è
-		LineTo(			g_hdc, x2+g_txxc*g_fxw, y2+g_tyyc*g_fyw );		// ƒ‰ƒCƒ“•`‰æ
-		DeleteObject(	hpen );											// ƒyƒ“”jŠü
+		hpen=CreatePen( PS_SOLID, 0, colorref );						// ãƒšãƒ³ä½œæˆ
+		SelectObject(	g_hdc, hpen );									// ãƒšãƒ³ã‚»ãƒ¬ã‚¯ãƒˆ
+		MoveToEx(		g_hdc, x1+g_txxc*g_fxw, y1+g_tyyc*g_fyw, 0 );	// å§‹ç‚¹æŒ‡å®š
+		LineTo(			g_hdc, x2+g_txxc*g_fxw, y2+g_tyyc*g_fyw );		// ãƒ©ã‚¤ãƒ³æç”»
+		DeleteObject(	hpen );											// ãƒšãƒ³ç ´æ£„
 	}
 
 #	else
@@ -98,8 +98,8 @@ static void	lineOnTxt( int x1, int y1, int x2, int y2, unsigned long colorref ){
 	stXCOL	*xcolp;
 
 	if( clpLin( &x1, &y1, &x2, &y2, x1, y1, x2, y2, 0, 0, g_txxd*g_fxw, g_tyyd*g_fyw ) ){
-		xcolp=colorref2xcolor( colorref );								// ‚q‚f‚a‚©‚ç‚wƒJƒ‰[‚É•ÏŠ·‚·‚é
-		XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );				// ‘OŒiFƒZƒbƒg
+		xcolp=colorref2xcolor( colorref );								// ï¼²ï¼§ï¼¢ã‹ã‚‰ï¼¸ã‚«ãƒ©ãƒ¼ã«å¤‰æ›ã™ã‚‹
+		XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );				// å‰æ™¯è‰²ã‚»ãƒƒãƒˆ
 		XDrawLine( g_dpyp, g_win, g_gc, x1+g_txxc*g_fxw, y1+g_tyyc*g_fyw, x2+g_txxc*g_fxw, y2+g_tyyc*g_fyw );
 	}
 #		else
@@ -109,7 +109,7 @@ static void	lineOnTxt( int x1, int y1, int x2, int y2, unsigned long colorref ){
 }
 
 /************************************************************************/
-/*	ƒ{ƒbƒNƒX•`‰æ														*/
+/*	ãƒœãƒƒã‚¯ã‚¹æç”»														*/
 /************************************************************************/
 
 static void	boxOnTxt( int x1, int y1, int x2, int y2, unsigned long colorref ){
@@ -120,18 +120,18 @@ static void	boxOnTxt( int x1, int y1, int x2, int y2, unsigned long colorref ){
 }
 
 /************************************************************************/
-/*	‹éŒ`‘I‘ğ•\¦														*/
+/*	çŸ©å½¢é¸æŠè¡¨ç¤º														*/
 /************************************************************************/
 
 static void	displaySelect(void){
 
-	int		xx1, yy1, xx2, yy2;											// ƒLƒƒƒ‰ƒNƒ^À•W
+	int		xx1, yy1, xx2, yy2;											// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
 
-	if( CUTCURP && CUTTYP ){											// ‹éŒ`‘I‘ğƒ‚[ƒh
-		xx1=CUTCURXX-PGXX;												// ¶
-		yy1=CUTPGYY+CUTCURYY-PGYY;										// ã
-		xx2=CURXX-PGXX;													// ‰E
-		yy2=CURYY;														// ‰º
+	if( CUTCURP && CUTTYP ){											// çŸ©å½¢é¸æŠãƒ¢ãƒ¼ãƒ‰
+		xx1=CUTCURXX-PGXX;												// å·¦
+		yy1=CUTPGYY+CUTCURYY-PGYY;										// ä¸Š
+		xx2=CURXX-PGXX;													// å³
+		yy2=CURYY;														// ä¸‹
 		if( xx1<=xx2 && yy1<=yy2 ){
 			boxOnTxt( xx1*g_fxw, yy1*g_fyw, xx2*g_fxw, (yy2+1)*g_fyw, CR_LB );
 		}
@@ -139,61 +139,61 @@ static void	displaySelect(void){
 }
 
 /************************************************************************/
-/*	ƒeƒLƒXƒg•`‰æ														*/
+/*	ãƒ†ã‚­ã‚¹ãƒˆæç”»														*/
 /************************************************************************/
 
 void	drwTxt( int xx, int yy, const char *txtp, int txtsiz, unsigned long bakcol, unsigned long forcol ){
 
 #	ifdef	_WIN32
 
-	int		x, y;														// ƒsƒNƒZƒ‹À•WŒn
+	int		x, y;														// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»
 	RECT	rect={ 0 };
 
-	x=xx*g_fxw;															// ƒsƒNƒZƒ‹À•WŒn‚w
-	y=yy*g_fyw;															// ƒsƒNƒZƒ‹À•WŒn‚x
-	rect.left=x;														// ¶
-	rect.right=x+txtsiz*g_fxw;											// ‰E
-	rect.top=y;															// ã
-	rect.bottom=y+g_fyw;												// ‰º
+	x=xx*g_fxw;															// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»ï¼¸
+	y=yy*g_fyw;															// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»ï¼¹
+	rect.left=x;														// å·¦
+	rect.right=x+txtsiz*g_fxw;											// å³
+	rect.top=y;															// ä¸Š
+	rect.bottom=y+g_fyw;												// ä¸‹
 
-	SetBkColor( g_hdc, bakcol );										// ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhƒJƒ‰[
-	SetTextColor( g_hdc, forcol );										// ƒtƒHƒAƒOƒ‰ƒEƒ“ƒhƒJƒ‰[
-	TextOut( g_hdc, x, y, txtp, txtsiz );								// •¶š—ñ•`‰æ
+	SetBkColor( g_hdc, bakcol );										// ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚«ãƒ©ãƒ¼
+	SetTextColor( g_hdc, forcol );										// ãƒ•ã‚©ã‚¢ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚«ãƒ©ãƒ¼
+	TextOut( g_hdc, x, y, txtp, txtsiz );								// æ–‡å­—åˆ—æç”»
 
 #	else
 #		ifndef	CURSES
 
-	stXCOL	*xcolp;														// ƒJƒ‰[\‘¢‘Ìƒ|ƒCƒ“ƒ^
-	int		x, y;														// ƒsƒNƒZƒ‹À•WŒn
+	stXCOL	*xcolp;														// ã‚«ãƒ©ãƒ¼æ§‹é€ ä½“ãƒã‚¤ãƒ³ã‚¿
+	int		x, y;														// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»
 
-	x=xx*g_fxw;															// ƒsƒNƒZƒ‹À•WŒn‚w
-	y=yy*g_fyw+g_fntascent;												// ƒsƒNƒZƒ‹À•WŒn‚x
-	xcolp=colorref2xcolor( bakcol );									// ‚q‚f‚a‚©‚ç‚wƒJƒ‰[‚É•ÏŠ·‚·‚é
-	XSetBackground( g_dpyp, g_gc, xcolp->col.pixel );					// ”wŒiFƒZƒbƒg
-	xcolp=colorref2xcolor( forcol );									// ‚q‚f‚a‚©‚ç‚wƒJƒ‰[‚É•ÏŠ·‚·‚é
-	XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );					// ‘OŒiFƒZƒbƒg
-	if( g_jp ){															// “ú–{Œêƒ‚[ƒh
+	x=xx*g_fxw;															// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»ï¼¸
+	y=yy*g_fyw+g_fntascent;												// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»ï¼¹
+	xcolp=colorref2xcolor( bakcol );									// ï¼²ï¼§ï¼¢ã‹ã‚‰ï¼¸ã‚«ãƒ©ãƒ¼ã«å¤‰æ›ã™ã‚‹
+	XSetBackground( g_dpyp, g_gc, xcolp->col.pixel );					// èƒŒæ™¯è‰²ã‚»ãƒƒãƒˆ
+	xcolp=colorref2xcolor( forcol );									// ï¼²ï¼§ï¼¢ã‹ã‚‰ï¼¸ã‚«ãƒ©ãƒ¼ã«å¤‰æ›ã™ã‚‹
+	XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );					// å‰æ™¯è‰²ã‚»ãƒƒãƒˆ
+	if( g_jp ){															// æ—¥æœ¬èªãƒ¢ãƒ¼ãƒ‰
 		XmbDrawImageString( g_dpyp, g_win, g_fs, g_gc, x, y, txtp, txtsiz );
-	}else{																// ‰pŒêƒ‚[ƒh
+	}else{																// è‹±èªãƒ¢ãƒ¼ãƒ‰
 		XDrawImageString( g_dpyp, g_win, g_gc, x, y, txtp, txtsiz );
 	}
 #		else
 
 	int			bakval, forval, rvs;
-	char		tmpa[4096];												// ƒeƒ“ƒ|ƒ‰ƒŠƒoƒbƒtƒ@
+	char		tmpa[4096];												// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒãƒƒãƒ•ã‚¡
 
 	memcpy( tmpa, txtp, txtsiz );
-	tmpa[txtsiz]=0;														// 0ƒ^[ƒ~ƒl[ƒg
-	bakval=(bakcol&0xff);												// ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhƒJƒ‰[
-	forval=(forcol&0xff);												// ƒtƒHƒAƒOƒ‰ƒEƒ“ƒhƒJƒ‰[
-	rvs=( forval<bakval );												// ”½“]”»’è
-	if( rvs ){															// ”½“]
-		attrset( A_REVERSE );											// ”½“]
+	tmpa[txtsiz]=0;														// 0ã‚¿ãƒ¼ãƒŸãƒãƒ¼ãƒˆ
+	bakval=(bakcol&0xff);												// ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚«ãƒ©ãƒ¼
+	forval=(forcol&0xff);												// ãƒ•ã‚©ã‚¢ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚«ãƒ©ãƒ¼
+	rvs=( forval<bakval );												// åè»¢åˆ¤å®š
+	if( rvs ){															// åè»¢
+		attrset( A_REVERSE );											// åè»¢
 	}else{
-		attrset( A_NORMAL );											// ƒm[ƒ}ƒ‹
+		attrset( A_NORMAL );											// ãƒãƒ¼ãƒãƒ«
 	}
-	move( yy, xx );														// ƒJ[ƒ\ƒ‹‚ğˆÚ“®‚·‚é
-	addstr( tmpa );														// •\¦
+	move( yy, xx );														// ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç§»å‹•ã™ã‚‹
+	addstr( tmpa );														// è¡¨ç¤º
 
 #		endif
 #	endif
@@ -201,49 +201,49 @@ void	drwTxt( int xx, int yy, const char *txtp, int txtsiz, unsigned long bakcol,
 }
 
 /************************************************************************/
-/*	ƒtƒBƒ‹																*/
+/*	ãƒ•ã‚£ãƒ«																*/
 /************************************************************************/
 
 void	drwFil( int xx1, int yy1, int xx2, int yy2, unsigned long col ){
 
 #	ifdef	_WIN32
 
-	int		x1, y1, x2, y2;												// ƒsƒNƒZƒ‹À•WŒn
-	RECT	rect;														// ‹éŒ`\‘¢‘Ì
-	HBRUSH	hbrush;														// ƒuƒ‰ƒV
+	int		x1, y1, x2, y2;												// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»
+	RECT	rect;														// çŸ©å½¢æ§‹é€ ä½“
+	HBRUSH	hbrush;														// ãƒ–ãƒ©ã‚·
 
-	x1=xx1*g_fxw;														// ¶
-	y1=yy1*g_fyw;														// ã
-	x2=xx2*g_fxw;														// ‰E
-	y2=yy2*g_fyw;														// ‰º
-	SetRect( &rect, x1, y1, x2, y2 );									// ‹éŒ`\‘¢‘ÌƒZƒbƒg
-	hbrush=CreateSolidBrush( col );										// ƒuƒ‰ƒVì¬
-	FillRect( g_hdc, &rect, hbrush );									// ‹éŒ`ƒtƒBƒ‹
-	DeleteObject( hbrush );												// ƒuƒ‰ƒV”jŠü
+	x1=xx1*g_fxw;														// å·¦
+	y1=yy1*g_fyw;														// ä¸Š
+	x2=xx2*g_fxw;														// å³
+	y2=yy2*g_fyw;														// ä¸‹
+	SetRect( &rect, x1, y1, x2, y2 );									// çŸ©å½¢æ§‹é€ ä½“ã‚»ãƒƒãƒˆ
+	hbrush=CreateSolidBrush( col );										// ãƒ–ãƒ©ã‚·ä½œæˆ
+	FillRect( g_hdc, &rect, hbrush );									// çŸ©å½¢ãƒ•ã‚£ãƒ«
+	DeleteObject( hbrush );												// ãƒ–ãƒ©ã‚·ç ´æ£„
 
 #	else
 #		ifndef	CURSES
 
-	int		x1, y1, x2, y2;												// ƒsƒNƒZƒ‹À•WŒn
-	stXCOL	*xcolp;														// ƒJƒ‰[\‘¢‘Ìƒ|ƒCƒ“ƒ^
+	int		x1, y1, x2, y2;												// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ç³»
+	stXCOL	*xcolp;														// ã‚«ãƒ©ãƒ¼æ§‹é€ ä½“ãƒã‚¤ãƒ³ã‚¿
 
-	x1=xx1*g_fxw;														// ¶
-	y1=yy1*g_fyw;														// ã
-	x2=xx2*g_fxw;														// ‰E
-	y2=yy2*g_fyw;														// ‰º
-	xcolp=colorref2xcolor( col );										// ‚q‚f‚a‚©‚ç‚wƒJƒ‰[‚É•ÏŠ·‚·‚é
-	XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );					// ‘OŒiFƒZƒbƒg
-	XFillRectangle( g_dpyp, g_win, g_gc, x1, y1, x2-x1, y2-y1 );		// ‹éŒ`ƒtƒBƒ‹
+	x1=xx1*g_fxw;														// å·¦
+	y1=yy1*g_fyw;														// ä¸Š
+	x2=xx2*g_fxw;														// å³
+	y2=yy2*g_fyw;														// ä¸‹
+	xcolp=colorref2xcolor( col );										// ï¼²ï¼§ï¼¢ã‹ã‚‰ï¼¸ã‚«ãƒ©ãƒ¼ã«å¤‰æ›ã™ã‚‹
+	XSetForeground(	g_dpyp, g_gc, xcolp->col.pixel );					// å‰æ™¯è‰²ã‚»ãƒƒãƒˆ
+	XFillRectangle( g_dpyp, g_win, g_gc, x1, y1, x2-x1, y2-y1 );		// çŸ©å½¢ãƒ•ã‚£ãƒ«
 
 #		else
 
 	static const char	spa[]="                                                                                                                                             ";
-	int					yy;												// YƒLƒƒƒ‰ƒNƒ^À•W
-	int					rvs;											// ”½“]ƒtƒ‰ƒO
+	int					yy;												// Yã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
+	int					rvs;											// åè»¢ãƒ•ãƒ©ã‚°
 
-	rvs=(col&0xff)>=0x80;												// ”½“]”»’è
+	rvs=(col&0xff)>=0x80;												// åè»¢åˆ¤å®š
 	for( yy=yy1; yy<yy2; yy++ ){
-		drwTxt( xx1, yy, spa, xx2-xx1, rvs, !rvs );						// ƒeƒLƒXƒg•`‰æ
+		drwTxt( xx1, yy, spa, xx2-xx1, rvs, !rvs );						// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 	}
 
 #		endif
@@ -252,7 +252,7 @@ void	drwFil( int xx1, int yy1, int xx2, int yy2, unsigned long col ){
 }
 
 /************************************************************************/
-/*	ƒCƒ“ƒtƒHƒ[ƒVƒ‡ƒ“•\¦												*/
+/*	ã‚¤ãƒ³ãƒ•ã‚©ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤º												*/
 /************************************************************************/
 
 static void	displayInf(void){
@@ -268,27 +268,27 @@ static void	displayInf(void){
 	char			tmpa[4096];
 	int				xxw;
 
-//	ƒ‚[ƒh
+//	ãƒ¢ãƒ¼ãƒ‰
 
 	sprintf( tmpa, "[%5d:%5d] %-4s %-5s ", PGYY+CURYY+1, CURXX+1, overinsa[g_flgins!=0], largesmalla[g_flgl2c!=0] );
-	drwTxt( MOD_XXC, MOD_YYC, tmpa, strlen( tmpa ), CR_MOD_BK, CR_BLACK );		// ƒeƒLƒXƒg•`‰æ
+	drwTxt( MOD_XXC, MOD_YYC, tmpa, strlen( tmpa ), CR_MOD_BK, CR_BLACK );		// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 
-//	ƒƒbƒZ[ƒW
+//	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 
 	sprintf( tmpa, "%-*s", MSG_XXD, g_msgstr );
-	drwTxt( MSG_XXC, MSG_YYC, tmpa, strlen( tmpa ), CR_MSG_BK, CR_BLACK );		// ƒeƒLƒXƒg•`‰æ
+	drwTxt( MSG_XXC, MSG_YYC, tmpa, strlen( tmpa ), CR_MSG_BK, CR_BLACK );		// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 
-//	ƒtƒ@ƒCƒ‹
+//	ãƒ•ã‚¡ã‚¤ãƒ«
 
 	xxw=g_xxw-FIL_XXC-2;
 	if( xxw>0 ){
 		sprintf( tmpa, "%c %-*s", FILCHG?'*':' ', xxw, FNAMP );
-		drwTxt( FIL_XXC, FIL_YYC, tmpa, strlen( tmpa ), CR_MOD_BK, CR_BLACK );	// ƒeƒLƒXƒg•`‰æ
+		drwTxt( FIL_XXC, FIL_YYC, tmpa, strlen( tmpa ), CR_MOD_BK, CR_BLACK );	// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 	}
 }
 
 /************************************************************************/
-/*	s”Ô†•\¦															*/
+/*	è¡Œç•ªå·è¡¨ç¤º															*/
 /************************************************************************/
 
 #	define	LNOXX		0
@@ -297,29 +297,29 @@ static void	displayInf(void){
 static void	displayLno( int x1, int y1, int x2, int y2 ){
 
 	static const unsigned long	cola[2]={
-		CR_LNO_BK,														// ”wŒiF
-		CR_LNO,															// ‘OŒiF
+		CR_LNO_BK,														// èƒŒæ™¯è‰²
+		CR_LNO,															// å‰æ™¯è‰²
 	};
-	int				yy1, yy2;											// ƒLƒƒƒ‰ƒNƒ^À•W
-	stLIN			*linp;												// sƒ|ƒCƒ“ƒ^
-	int				seekn;												// ƒV[ƒN‚Å‚«‚½”
-	int				yy;													// ƒLƒƒƒ‰ƒNƒ^À•W
-	char			tmpa[256];											// ƒeƒ“ƒ|ƒ‰ƒŠƒoƒbƒtƒ@
+	int				yy1, yy2;											// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
+	stLIN			*linp;												// è¡Œãƒã‚¤ãƒ³ã‚¿
+	int				seekn;												// ã‚·ãƒ¼ã‚¯ã§ããŸæ•°
+	int				yy;													// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
+	char			tmpa[256];											// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒãƒƒãƒ•ã‚¡
 
 	(void)&x1, (void)&x2;
-	if( g_lnosiz ){														// s”Ô†•\¦—LŒø
-		yy1=y1/g_fyw;													// ã
-		yy2=(y2+g_fyw-1)/g_fyw;											// ‰º
-		linp=(stLIN*)dbSeek( &seekn, PGP, yy1 );						// w’è‚µ‚½ƒIƒtƒZƒbƒg•ªƒV[ƒN‚·‚é
-		if( seekn!=yy1 ){												// ƒV[ƒN‚Å‚«‚È‚©‚Á‚½
-			linp=0;														// sƒ|ƒCƒ“ƒ^‚Í–³Œø
+	if( g_lnosiz ){														// è¡Œç•ªå·è¡¨ç¤ºæœ‰åŠ¹
+		yy1=y1/g_fyw;													// ä¸Š
+		yy2=(y2+g_fyw-1)/g_fyw;											// ä¸‹
+		linp=(stLIN*)dbSeek( &seekn, PGP, yy1 );						// æŒ‡å®šã—ãŸã‚ªãƒ•ã‚»ãƒƒãƒˆåˆ†ã‚·ãƒ¼ã‚¯ã™ã‚‹
+		if( seekn!=yy1 ){												// ã‚·ãƒ¼ã‚¯ã§ããªã‹ã£ãŸ
+			linp=0;														// è¡Œãƒã‚¤ãƒ³ã‚¿ã¯ç„¡åŠ¹
 		}
 		for( yy=yy1; yy<yy2; yy++ ){
-			if( linp ){													// s‚ª‘¶İ‚·‚é
+			if( linp ){													// è¡ŒãŒå­˜åœ¨ã™ã‚‹
 				sprintf( tmpa, "%*d ", g_lnosiz-1, PGYY+yy+1 );
-				drwTxt( LNOXX, (LNOYY+yy), tmpa, g_lnosiz, cola[linp->chgflg], cola[!linp->chgflg] );			// ƒeƒLƒXƒg•`‰æ
-				linp=(stLIN*)dbNxt( linp );								// sƒ|ƒCƒ“ƒ^ƒV[ƒN
-			}else{														// s‚Í‘¶İ‚µ‚È‚¢
+				drwTxt( LNOXX, (LNOYY+yy), tmpa, g_lnosiz, cola[linp->chgflg], cola[!linp->chgflg] );			// ãƒ†ã‚­ã‚¹ãƒˆæç”»
+				linp=(stLIN*)dbNxt( linp );								// è¡Œãƒã‚¤ãƒ³ã‚¿ã‚·ãƒ¼ã‚¯
+			}else{														// è¡Œã¯å­˜åœ¨ã—ãªã„
 				drwFil( LNOXX, LNOYY+yy, LNOXX+g_lnosiz, LNOYY+yy+1, cola[0] );
 			}
 		}
@@ -327,7 +327,7 @@ static void	displayLno( int x1, int y1, int x2, int y2 ){
 }
 
 /************************************************************************/
-/*	Š¿šƒm[ƒ}ƒ‰ƒCƒY													*/
+/*	æ¼¢å­—ãƒãƒ¼ãƒãƒ©ã‚¤ã‚º													*/
 /************************************************************************/
 
 #	ifdef	CURSES
@@ -355,7 +355,7 @@ static int	kannrm( const char *txtadr, int siz ){
 #	endif
 
 /************************************************************************/
-/*	ƒeƒLƒXƒg•\¦														*/
+/*	ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º														*/
 /************************************************************************/
 
 #	define	TXTXX		g_lnosiz
@@ -364,167 +364,167 @@ static int	kannrm( const char *txtadr, int siz ){
 static void	displayTxt( int x1, int y1, int x2, int y2 ){
 
 	static const unsigned long	cola[2]={
-		CR_WHITE,														// ƒzƒƒCƒg
-		CR_LB,															// ƒ‰ƒCƒgƒuƒ‹[
+		CR_WHITE,														// ãƒ›ãƒ¯ã‚¤ãƒˆ
+		CR_LB,															// ãƒ©ã‚¤ãƒˆãƒ–ãƒ«ãƒ¼
 	};
-	int				xx1, yy1, xx2, yy2;									// ƒLƒƒƒ‰ƒNƒ^À•W
-	stLIN			*linp;												// sƒ|ƒCƒ“ƒ^
-	stDB			*dldbp;												// ƒfƒBƒXƒvƒŒƒCƒŠƒXƒgDB
-	stTXTDL			*dlp;												// ƒfƒBƒXƒvƒŒƒCƒŠƒXƒgƒ|ƒCƒ“ƒ^
-	int				seekn;												// ƒV[ƒN‚Å‚«‚½”
-	unsigned long	bakforcola[3]={ CR_BLACK, CR_WHITE };				// ”wŒiFA‘O–ÊF
-	int				curxx;												// ƒJ[ƒ\ƒ‹‚wÀ•W
-	int				xx, yy;												// ƒLƒƒƒ‰ƒNƒ^À•W
-	stLM			lm;													// sƒ}ƒbƒv
-	int				eof;												// I’[sƒtƒ‰ƒO
-	int				eofdsp;												// I’[•\¦ƒtƒ‰ƒO
-	int				cutrvs;												// s’PˆÊƒJƒbƒgƒ‚[ƒh”½“]
-	int				rvs;												// ”½“]ƒtƒ‰ƒO
-	int				lno;												// s”Ô†
-	int				curyy=-1;											// ƒJ[ƒ\ƒ‹ƒ‰ƒCƒ“•\¦‚Ì‚½‚ß‚Ìƒ[ƒN
-	char			*keyadr;											// •`‰æ•¶š—ñƒAƒhƒŒƒX
-	int				keysiz;												// •`‰æ•¶š—ñƒTƒCƒY
+	int				xx1, yy1, xx2, yy2;									// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
+	stLIN			*linp;												// è¡Œãƒã‚¤ãƒ³ã‚¿
+	stDB			*dldbp;												// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒªã‚¹ãƒˆDB
+	stTXTDL			*dlp;												// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒªã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	int				seekn;												// ã‚·ãƒ¼ã‚¯ã§ããŸæ•°
+	unsigned long	bakforcola[3]={ CR_BLACK, CR_WHITE };				// èƒŒæ™¯è‰²ã€å‰é¢è‰²
+	int				curxx;												// ã‚«ãƒ¼ã‚½ãƒ«ï¼¸åº§æ¨™
+	int				xx, yy;												// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™
+	stLM			lm;													// è¡Œãƒãƒƒãƒ—
+	int				eof;												// çµ‚ç«¯è¡Œãƒ•ãƒ©ã‚°
+	int				eofdsp;												// çµ‚ç«¯è¡¨ç¤ºãƒ•ãƒ©ã‚°
+	int				cutrvs;												// è¡Œå˜ä½ã‚«ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰åè»¢
+	int				rvs;												// åè»¢ãƒ•ãƒ©ã‚°
+	int				lno;												// è¡Œç•ªå·
+	int				curyy=-1;											// ã‚«ãƒ¼ã‚½ãƒ«ãƒ©ã‚¤ãƒ³è¡¨ç¤ºã®ãŸã‚ã®ãƒ¯ãƒ¼ã‚¯
+	char			*keyadr;											// æç”»æ–‡å­—åˆ—ã‚¢ãƒ‰ãƒ¬ã‚¹
+	int				keysiz;												// æç”»æ–‡å­—åˆ—ã‚µã‚¤ã‚º
 
-	xx1=x1/g_fxw;														// ¶
-	yy1=y1/g_fyw;														// ã
-	xx2=(x2+g_fxw-1)/g_fxw;												// ‰E
-	yy2=(y2+g_fyw-1)/g_fyw;												// ‰º
-	linp=(stLIN*)dbSeek( &seekn, PGP, yy1 );							// w’è‚µ‚½ƒIƒtƒZƒbƒg•ªƒV[ƒN‚·‚é
-	if( seekn!=yy1 ){													// ƒV[ƒN‚Å‚«‚È‚©‚Á‚½
-		linp=0;															// sƒ|ƒCƒ“ƒ^‚ğ–³Œø‚É‚·‚é
+	xx1=x1/g_fxw;														// å·¦
+	yy1=y1/g_fyw;														// ä¸Š
+	xx2=(x2+g_fxw-1)/g_fxw;												// å³
+	yy2=(y2+g_fyw-1)/g_fyw;												// ä¸‹
+	linp=(stLIN*)dbSeek( &seekn, PGP, yy1 );							// æŒ‡å®šã—ãŸã‚ªãƒ•ã‚»ãƒƒãƒˆåˆ†ã‚·ãƒ¼ã‚¯ã™ã‚‹
+	if( seekn!=yy1 ){													// ã‚·ãƒ¼ã‚¯ã§ããªã‹ã£ãŸ
+		linp=0;															// è¡Œãƒã‚¤ãƒ³ã‚¿ã‚’ç„¡åŠ¹ã«ã™ã‚‹
 	}
 	for( yy=yy1; yy<yy2; yy++ ){
-		curxx=-1;														// ƒJ[ƒ\ƒ‹s‚Å‚Í‚È‚¢
-		xx=0;															// ‚wÀ•WƒNƒŠƒA
-		if( linp ){														// s‚ª‘¶İ‚·‚é
-			if( yy==CURYY && g_cursw ){									// ƒJ[ƒ\ƒ‹s
-				lmMak( &lm, (char*)dbKEYADR( linp ), g_tabstp, 0 );		// sƒ}ƒbƒvì¬
-				curxx=lmPosAdj( &lm, CURXX, 0 );						// ƒJ[ƒ\ƒ‹ˆÊ’u³‹K‰»
+		curxx=-1;														// ã‚«ãƒ¼ã‚½ãƒ«è¡Œã§ã¯ãªã„
+		xx=0;															// ï¼¸åº§æ¨™ã‚¯ãƒªã‚¢
+		if( linp ){														// è¡ŒãŒå­˜åœ¨ã™ã‚‹
+			if( yy==CURYY && g_cursw ){									// ã‚«ãƒ¼ã‚½ãƒ«è¡Œ
+				lmMak( &lm, (char*)dbKEYADR( linp ), g_tabstp, 0 );		// è¡Œãƒãƒƒãƒ—ä½œæˆ
+				curxx=lmPosAdj( &lm, CURXX, 0 );						// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®æ­£è¦åŒ–
 			}
-			if( dbNxt( linp ) ){										// I’[s‚Å‚Í‚È‚¢
-				eof=0;													// [EOF]•\¦
-				eofdsp=g_flgcr;											// I’[•\¦ƒtƒ‰ƒO‚Í‰üs•\¦ƒtƒ‰ƒO
-			}else{														// I’[s
-				eof=1;													// [.]•\¦
-				eofdsp=g_flgeof;										// I’[•\¦ƒtƒ‰ƒO‚Í[EOF]•\¦ƒtƒ‰ƒO
+			if( dbNxt( linp ) ){										// çµ‚ç«¯è¡Œã§ã¯ãªã„
+				eof=0;													// [EOF]è¡¨ç¤º
+				eofdsp=g_flgcr;											// çµ‚ç«¯è¡¨ç¤ºãƒ•ãƒ©ã‚°ã¯æ”¹è¡Œè¡¨ç¤ºãƒ•ãƒ©ã‚°
+			}else{														// çµ‚ç«¯è¡Œ
+				eof=1;													// [.]è¡¨ç¤º
+				eofdsp=g_flgeof;										// çµ‚ç«¯è¡¨ç¤ºãƒ•ãƒ©ã‚°ã¯[EOF]è¡¨ç¤ºãƒ•ãƒ©ã‚°
 			}
-			cutrvs=0;													// s’PˆÊƒJƒbƒgƒ‚[ƒh”½“]ƒtƒ‰ƒOƒNƒŠƒA
-			if( CUTCURP && !CUTTYP ){									// s‘I‘ğƒ‚[ƒh
-				lno=PGYY+yy;											// ˆ—’†‚Ìs”Ô†
-				if( lno>=CUTPGYY+CUTCURYY && lno<PGYY+CURYY ){			// ”ÍˆÍw’è’†‚ÉŠÜ‚Ü‚ê‚é
-					cutrvs=1;											// s’PˆÊƒJƒbƒgƒ‚[ƒh”½“]ƒtƒ‰ƒOƒZƒbƒg
+			cutrvs=0;													// è¡Œå˜ä½ã‚«ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰åè»¢ãƒ•ãƒ©ã‚°ã‚¯ãƒªã‚¢
+			if( CUTCURP && !CUTTYP ){									// è¡Œé¸æŠãƒ¢ãƒ¼ãƒ‰
+				lno=PGYY+yy;											// å‡¦ç†ä¸­ã®è¡Œç•ªå·
+				if( lno>=CUTPGYY+CUTCURYY && lno<PGYY+CURYY ){			// ç¯„å›²æŒ‡å®šä¸­ã«å«ã¾ã‚Œã‚‹
+					cutrvs=1;											// è¡Œå˜ä½ã‚«ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰åè»¢ãƒ•ãƒ©ã‚°ã‚»ãƒƒãƒˆ
 				}
 			}
 			dldbp=txtdl( (char*)dbKEYADR( linp ), curxx, g_tabstp, g_tabdsp, eof, eofdsp, PGXX, g_scdbiz, xx2-xx1 );
-			dbFOR( dldbp, dlp, stTXTDL* ){								// ƒfƒBƒXƒvƒŒƒCƒŠƒXƒg‘“–‚è
-				if( clp1( 0, 0, xx-PGXX, xx-PGXX+dlp->dspsiz, xx1, xx2 ) ){		// •\¦ƒGƒŠƒA‚ÉG‚ê‚Ä‚¢‚é
+			dbFOR( dldbp, dlp, stTXTDL* ){								// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒªã‚¹ãƒˆç·å½“ã‚Š
+				if( clp1( 0, 0, xx-PGXX, xx-PGXX+dlp->dspsiz, xx1, xx2 ) ){		// è¡¨ç¤ºã‚¨ãƒªã‚¢ã«è§¦ã‚Œã¦ã„ã‚‹
 #	ifdef	CURSES
-					rvs=cutrvs;											// ƒJ[ƒ\ƒ‹‚ÍCURSES‚ªo‚·
+					rvs=cutrvs;											// ã‚«ãƒ¼ã‚½ãƒ«ã¯CURSESãŒå‡ºã™
 #	else
-					rvs=dlp->rvs^cutrvs;								// ”½“]ƒtƒ‰ƒOŒvZ
+					rvs=dlp->rvs^cutrvs;								// åè»¢ãƒ•ãƒ©ã‚°è¨ˆç®—
 #	endif
-					bakforcola[1]=cola[dlp->col];						// ƒeƒLƒXƒgƒJƒ‰[ƒZƒbƒg
-					if( dlp->cur && !g_flgins ){						// ã‘‚«ƒ‚[ƒh
-						bakforcola[1]=CR_OVER;							// ƒeƒLƒXƒgƒJƒ‰[ƒZƒbƒg
+					bakforcola[1]=cola[dlp->col];						// ãƒ†ã‚­ã‚¹ãƒˆã‚«ãƒ©ãƒ¼ã‚»ãƒƒãƒˆ
+					if( dlp->cur && !g_flgins ){						// ä¸Šæ›¸ããƒ¢ãƒ¼ãƒ‰
+						bakforcola[1]=CR_OVER;							// ãƒ†ã‚­ã‚¹ãƒˆã‚«ãƒ©ãƒ¼ã‚»ãƒƒãƒˆ
 					}
-					keyadr=(char*)dbKEYADR( dlp );						// ƒL[ƒAƒhƒŒƒX
-					keysiz=dbKEYSIZ( dlp );								// ƒL[ƒTƒCƒY
+					keyadr=(char*)dbKEYADR( dlp );						// ã‚­ãƒ¼ã‚¢ãƒ‰ãƒ¬ã‚¹
+					keysiz=dbKEYSIZ( dlp );								// ã‚­ãƒ¼ã‚µã‚¤ã‚º
 #	ifdef	CURSES
-					if( keysiz>xx2-xx+PGXX-1 ){							// CURSES ‚ª‰üs‚µ‚È‚¢‚æ‚¤‚ÉA’Êí‚æ‚è1•¶š•ª­‚È‚­ƒNƒ‰ƒ“ƒv‚·‚é
+					if( keysiz>xx2-xx+PGXX-1 ){							// CURSES ãŒæ”¹è¡Œã—ãªã„ã‚ˆã†ã«ã€é€šå¸¸ã‚ˆã‚Š1æ–‡å­—åˆ†å°‘ãªãã‚¯ãƒ©ãƒ³ãƒ—ã™ã‚‹
 						keysiz=xx2-xx+PGXX-1;
 					}
-					keysiz=kannrm( keyadr, keysiz );					// Š¿šƒm[ƒ}ƒ‰ƒCƒY
+					keysiz=kannrm( keyadr, keysiz );					// æ¼¢å­—ãƒãƒ¼ãƒãƒ©ã‚¤ã‚º
 #	endif
-					if( keysiz ){										// ƒL[ƒoƒbƒtƒ@‚Í—LŒø
-						drwTxt( (TXTXX+xx-PGXX), (TXTYY+yy), keyadr, keysiz, bakforcola[rvs], bakforcola[!rvs] );				// ƒeƒLƒXƒg•`‰æ
-					}else{												// ƒL[ƒoƒbƒtƒ@‚Í–³Œø
+					if( keysiz ){										// ã‚­ãƒ¼ãƒãƒƒãƒ•ã‚¡ã¯æœ‰åŠ¹
+						drwTxt( (TXTXX+xx-PGXX), (TXTYY+yy), keyadr, keysiz, bakforcola[rvs], bakforcola[!rvs] );				// ãƒ†ã‚­ã‚¹ãƒˆæç”»
+					}else{												// ã‚­ãƒ¼ãƒãƒƒãƒ•ã‚¡ã¯ç„¡åŠ¹
 						drwFil( (TXTXX+xx-PGXX), (TXTYY+yy), (TXTXX+xx-PGXX)+dlp->dspsiz, (TXTYY+yy)+1, bakforcola[rvs] );
 					}
-					if( xx==PGXX-1 ){									// ¶‘¤‚É‚Í‚İo‚Ä‚¢‚é
-						displayLno( 0, (yy)*g_fyw, g_lnosiz*g_fxw, (yy+1)*g_fyw );				// s”Ô†Ä•`‰æ
+					if( xx==PGXX-1 ){									// å·¦å´ã«ã¯ã¿å‡ºã¦ã„ã‚‹
+						displayLno( 0, (yy)*g_fyw, g_lnosiz*g_fxw, (yy+1)*g_fyw );				// è¡Œç•ªå·å†æç”»
 					}
 				}
-				xx+=dlp->dspsiz;										// À•WXV
+				xx+=dlp->dspsiz;										// åº§æ¨™æ›´æ–°
 			}
-			dbClose( dldbp );											// ƒfƒBƒXƒvƒŒƒCƒŠƒXƒgDBƒNƒ[ƒY
-			linp=(stLIN*)dbNxt( linp );									// sƒ|ƒCƒ“ƒ^ƒV[ƒN
+			dbClose( dldbp );											// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒªã‚¹ãƒˆDBã‚¯ãƒ­ãƒ¼ã‚º
+			linp=(stLIN*)dbNxt( linp );									// è¡Œãƒã‚¤ãƒ³ã‚¿ã‚·ãƒ¼ã‚¯
 		}
 		if( xx<PGXX ){
 			xx=PGXX;
 		}
-		if( xx-PGXX<xx2 ){												// ‹ó‚«ƒGƒŠƒA‚ª‘¶İ‚·‚é
+		if( xx-PGXX<xx2 ){												// ç©ºãã‚¨ãƒªã‚¢ãŒå­˜åœ¨ã™ã‚‹
 			drwFil( TXTXX+xx-PGXX, TXTYY+yy, TXTXX+xx2, TXTYY+yy+1, CR_BLACK );
 		}
-		if( curxx>=0 ){													// ƒJ[ƒ\ƒ‹s
-			curyy=yy;													// ƒJ[ƒ\ƒ‹ƒ‰ƒCƒ“•\¦‚Ì‚½‚ß‚Ìƒ[ƒNƒZƒbƒg
+		if( curxx>=0 ){													// ã‚«ãƒ¼ã‚½ãƒ«è¡Œ
+			curyy=yy;													// ã‚«ãƒ¼ã‚½ãƒ«ãƒ©ã‚¤ãƒ³è¡¨ç¤ºã®ãŸã‚ã®ãƒ¯ãƒ¼ã‚¯ã‚»ãƒƒãƒˆ
 		}
 	}
-	if( curyy>=0 ){														// ƒJ[ƒ\ƒ‹s‚ª‘¶İ‚·‚é
-		lineOnTxt( 0, curyy*g_fyw+g_fyw, g_txxd*g_fxw, curyy*g_fyw+g_fyw, CR_LB );				// ƒJ[ƒ\ƒ‹sƒ‰ƒCƒ“•\¦
+	if( curyy>=0 ){														// ã‚«ãƒ¼ã‚½ãƒ«è¡ŒãŒå­˜åœ¨ã™ã‚‹
+		lineOnTxt( 0, curyy*g_fyw+g_fyw, g_txxd*g_fxw, curyy*g_fyw+g_fyw, CR_LB );				// ã‚«ãƒ¼ã‚½ãƒ«è¡Œãƒ©ã‚¤ãƒ³è¡¨ç¤º
 	}
-	displaySelect();													// ‹éŒ`‘I‘ğ•\¦
+	displaySelect();													// çŸ©å½¢é¸æŠè¡¨ç¤º
 }
 
 /************************************************************************/
-/*	ƒLƒƒƒ‰ƒNƒ^ƒ{ƒbƒNƒX•\¦												*/
+/*	ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒœãƒƒã‚¯ã‚¹è¡¨ç¤º												*/
 /************************************************************************/
 
 void	displayChrBox( int xxc, int yyc, int xxd, int yyd, const char *msgp ){
 
-	int		yy;															// ‚xÀ•W
-	char	tmpa[256];													// ƒeƒ“ƒ|ƒ‰ƒŠƒoƒbƒtƒ@
+	int		yy;															// ï¼¹åº§æ¨™
+	char	tmpa[256];													// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒãƒƒãƒ•ã‚¡
 
 	for( yy=0; yy<yyd; yy++ ){
-		if( yy==0 || yy==yyd-1 ){										// æ“ª–”‚ÍI’[
+		if( yy==0 || yy==yyd-1 ){										// å…ˆé ­åˆã¯çµ‚ç«¯
 			sprintf( tmpa, " %-*s", xxd-1, msgp );
-			drwTxt( xxc, yyc+yy, tmpa, strlen( tmpa ), CR_LB, CR_BLACK );		// ƒeƒLƒXƒg•`‰æ
+			drwTxt( xxc, yyc+yy, tmpa, strlen( tmpa ), CR_LB, CR_BLACK );		// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 			msgp="";
 		}else{
-			drwTxt( xxc,       yyc+yy, tmpa, 1, CR_LB, CR_BLACK );		// ƒeƒLƒXƒg•`‰æ
-			drwTxt( xxc+xxd-1, yyc+yy, tmpa, 1, CR_LB, CR_BLACK );		// ƒeƒLƒXƒg•`‰æ
+			drwTxt( xxc,       yyc+yy, tmpa, 1, CR_LB, CR_BLACK );		// ãƒ†ã‚­ã‚¹ãƒˆæç”»
+			drwTxt( xxc+xxd-1, yyc+yy, tmpa, 1, CR_LB, CR_BLACK );		// ãƒ†ã‚­ã‚¹ãƒˆæç”»
 		}
 	}
 }
 
 /************************************************************************/
-/*	•\¦																*/
+/*	è¡¨ç¤º																*/
 /************************************************************************/
 
 void	display( int x1, int y1, int x2, int y2 ){
 
-	int				cxc, cyc, cxd, cyd;									// ƒNƒŠƒbƒv‚³‚ê‚½À•W
+	int				cxc, cyc, cxd, cyd;									// ã‚¯ãƒªãƒƒãƒ—ã•ã‚ŒãŸåº§æ¨™
 
 	if( clpBox( &cxc, &cyc, &cxd, &cyd, x1, y1, x1+x2, y1+y2, 0, 0, g_xw, g_fyw ) ){
-		displayInf();													// ƒCƒ“ƒtƒHƒ[ƒVƒ‡ƒ“•\¦
+		displayInf();													// ã‚¤ãƒ³ãƒ•ã‚©ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤º
 	}
 	if( clpBox( &cxc, &cyc, &cxd, &cyd, x1, y1, x2-x1, y2-y1, 0, g_tyyc*g_fyw, g_lnosiz*g_fxw, g_tyyd*g_fyw ) ){
-		displayLno( cxc, cyc-g_tyyc*g_fyw, cxc+cxd, cyc+cyd );			// s”Ô†•\¦
+		displayLno( cxc, cyc-g_tyyc*g_fyw, cxc+cxd, cyc+cyd );			// è¡Œç•ªå·è¡¨ç¤º
 	}
 	if( clpBox( &cxc, &cyc, &cxd, &cyd, x1, y1, x2-x1, y2-y1, g_txxc*g_fxw, g_tyyc*g_fyw, g_txxd*g_fxw, g_tyyd*g_fyw ) ){
-		displayTxt( cxc-g_txxc*g_fxw, cyc-g_tyyc*g_fyw, cxc+cxd-g_txxc*g_fxw, cyc+cyd-g_tyyc*g_fyw );			// ƒeƒLƒXƒg•\¦
+		displayTxt( cxc-g_txxc*g_fxw, cyc-g_tyyc*g_fyw, cxc+cxd-g_txxc*g_fxw, cyc+cyd-g_tyyc*g_fyw );			// ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
 	}
-	helpReDsp();														// ƒwƒ‹ƒvÄ•\¦
-	linedtReDsp();														// ˆês•ÒWÄ•\¦
+	helpReDsp();														// ãƒ˜ãƒ«ãƒ—å†è¡¨ç¤º
+	linedtReDsp();														// ä¸€è¡Œç·¨é›†å†è¡¨ç¤º
 #	ifdef	CURSES
 	{
-		stLM			lm;												// sƒ}ƒbƒv
-		int				curxx;											// ƒJ[ƒ\ƒ‹‚wÀ•W
+		stLM			lm;												// è¡Œãƒãƒƒãƒ—
+		int				curxx;											// ã‚«ãƒ¼ã‚½ãƒ«ï¼¸åº§æ¨™
 		int				xx;
 
-		lmMak( &lm, (char*)dbKEYADR( CURP), g_tabstp, 0 );				// sƒ}ƒbƒvì¬
-		curxx=lmPosAdj( &lm, CURXX, 0 );								// ƒJ[ƒ\ƒ‹ˆÊ’u³‹K‰»
+		lmMak( &lm, (char*)dbKEYADR( CURP), g_tabstp, 0 );				// è¡Œãƒãƒƒãƒ—ä½œæˆ
+		curxx=lmPosAdj( &lm, CURXX, 0 );								// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®æ­£è¦åŒ–
 		xx=curxx-PGXX;
 		if( xx<0 ){
 			xx=0;
 		}
-		move( TXTYY+CURYY, TXTXX+xx );									// ƒJ[ƒ\ƒ‹ˆÚ“®
+		move( TXTYY+CURYY, TXTXX+xx );									// ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
 		refresh();
 	}
 #	endif
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒOƒ[ƒoƒ‹ )										*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ã‚°ãƒ­ãƒ¼ãƒãƒ« )										*/
 /************************************************************************/
 
 void	invalidate( int xxc, int yyc, int xxd, int yyd ){
@@ -543,58 +543,58 @@ void	invalidate( int xxc, int yyc, int xxd, int yyd ){
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒeƒLƒXƒg )										*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ãƒ†ã‚­ã‚¹ãƒˆ )										*/
 /************************************************************************/
 
 void	invalidateTxt( int xxc, int yyc, int xxd, int yyd ){
-	invalidate( g_txxc+xxc, g_tyyc+yyc, xxd, yyd );						// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( g_txxc+xxc, g_tyyc+yyc, xxd, yyd );						// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ‘S‚Ä )											*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( å…¨ã¦ )											*/
 /************************************************************************/
 
 void	invalidateAll(void){
-	invalidate( 0, 0, g_xxw, g_yyw );									// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( 0, 0, g_xxw, g_yyw );									// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 #	ifdef	_WIN32
 	SetScroll();
 #	endif
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒ‚[ƒh )											*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ãƒ¢ãƒ¼ãƒ‰ )											*/
 /************************************************************************/
 
 void	invalidateMod(void){
-	invalidate( MOD_XXC, 0, MOD_XXD, 1 );								// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( MOD_XXC, 0, MOD_XXD, 1 );								// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒƒbƒZ[ƒW )										*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ )										*/
 /************************************************************************/
 
 void	invalidateMsg(void){
-	invalidate( MSG_XXC, 0, MSG_XXD, 1 );								// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( MSG_XXC, 0, MSG_XXD, 1 );								// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒtƒ@ƒCƒ‹ )										*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ãƒ•ã‚¡ã‚¤ãƒ« )										*/
 /************************************************************************/
 
 void	invalidateFil(void){
-	invalidate( FIL_XXC, 0, g_xxw-FIL_XXC, 1 );							// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( FIL_XXC, 0, g_xxw-FIL_XXC, 1 );							// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒCƒ“ƒtƒHƒ[ƒVƒ‡ƒ“ )								*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ã‚¤ãƒ³ãƒ•ã‚©ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ )								*/
 /************************************************************************/
 
 void	invalidateInf(void){
-	invalidate( 0, 0, g_xxw, 1 );										// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( 0, 0, g_xxw, 1 );										// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( s )												*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( è¡Œ )												*/
 /************************************************************************/
 
 void	invalidateLin( int yy ){
@@ -602,31 +602,31 @@ void	invalidateLin( int yy ){
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( s”Ô† )											*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( è¡Œç•ªå· )											*/
 /************************************************************************/
 
 void	invalidateLno( int yy ){
-	invalidate( 0, g_tyyc+yy, g_lnosiz, 1 );							// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( 0, g_tyyc+yy, g_lnosiz, 1 );							// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ƒwƒ‹ƒv )											*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ãƒ˜ãƒ«ãƒ— )											*/
 /************************************************************************/
 
 void	invalidateHlp(void){
-	invalidate( 0, 0, 0, 0 );											// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( 0, 0, 0, 0 );											// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	Ä•`‰æƒŠƒNƒGƒXƒg( ˆês•ÒW )										*/
+/*	å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ( ä¸€è¡Œç·¨é›† )										*/
 /************************************************************************/
 
 void	invalidateLinedt(void){
-	invalidate( 0, 0, 0, 0 );											// Ä•`‰æƒŠƒNƒGƒXƒg
+	invalidate( 0, 0, 0, 0 );											// å†æç”»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
 }
 
 /************************************************************************/
-/*	ƒJ[ƒ\ƒ‹•\¦														*/
+/*	ã‚«ãƒ¼ã‚½ãƒ«è¡¨ç¤º														*/
 /************************************************************************/
 
 int		curSw( int cursw ){
@@ -642,61 +642,61 @@ int		curSw( int cursw ){
 }
 
 /************************************************************************/
-/*	•\¦ƒRƒ“ƒtƒBƒOƒŒ[ƒVƒ‡ƒ“											*/
+/*	è¡¨ç¤ºã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³											*/
 /************************************************************************/
 
 void	dspConfig( int xw, int yw ){
 
-	g_xw	=xw;														// ƒNƒ‰ƒCƒAƒ“ƒgƒGƒŠƒA‰¡•
-	g_yw	=yw;														// ƒNƒ‰ƒCƒAƒ“ƒgƒGƒŠƒAc•
+	g_xw	=xw;														// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¨ãƒªã‚¢æ¨ªå¹…
+	g_yw	=yw;														// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¨ãƒªã‚¢ç¸¦å¹…
 	g_xxw	=(g_xw+g_fxw-1)/g_fxw;
 	g_yyw	=(g_yw+g_fyw-1)/g_fyw;
-	g_txxc	=g_lnosiz;													// s”Ô†•\¦ƒTƒCƒY
+	g_txxc	=g_lnosiz;													// è¡Œç•ªå·è¡¨ç¤ºã‚µã‚¤ã‚º
 	g_tyyc	=1;
 	g_txxd	=g_xxw-g_lnosiz;
 	g_tyyd	=g_yyw-1;
-	if( CURYY>=g_tyyd ){												// ‚Í‚İo‚Ä‚¢‚é
-		CURYY=g_tyyd-1;													// ÅIs‚Ö
-		CURP=(stLIN*)dbSeek( 0, PGP, CURYY );							// Ÿ‚Ìƒy[ƒWæ“ª‚Ü‚ÅƒV[ƒN‚µ‚Ä‚İ‚é
+	if( CURYY>=g_tyyd ){												// ã¯ã¿å‡ºã¦ã„ã‚‹
+		CURYY=g_tyyd-1;													// æœ€çµ‚è¡Œã¸
+		CURP=(stLIN*)dbSeek( 0, PGP, CURYY );							// æ¬¡ã®ãƒšãƒ¼ã‚¸å…ˆé ­ã¾ã§ã‚·ãƒ¼ã‚¯ã—ã¦ã¿ã‚‹
 	}
 }
 
 /************************************************************************/
-/*	ƒƒbƒZ[ƒWƒZƒbƒg													*/
+/*	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒƒãƒˆ													*/
 /************************************************************************/
 
 void	msgSet( const char *strp ){
-	if( strcmp( g_msgstr, strp ) ){										// ˆá‚¤
-		strcpy( g_msgstr, strp );										// ƒoƒbƒtƒ@‚ÉƒRƒs[
+	if( strcmp( g_msgstr, strp ) ){										// é•ã†
+		strcpy( g_msgstr, strp );										// ãƒãƒƒãƒ•ã‚¡ã«ã‚³ãƒ”ãƒ¼
 		invalidateMsg();
 	}
 }
 
 /************************************************************************/
-/*	Y/N ‘I‘ğ															*/
+/*	Y/N é¸æŠ															*/
 /************************************************************************/
 
 int		YorN( const char *msgstr ){
 
-	int		res=YN_CANCEL;												// ƒŠƒUƒ‹ƒg
-	int		keysym;														// ƒL[ƒVƒ“ƒ{ƒ‹
+	int		res=YN_CANCEL;												// ãƒªã‚¶ãƒ«ãƒˆ
+	int		keysym;														// ã‚­ãƒ¼ã‚·ãƒ³ãƒœãƒ«
 
-	msgSet( msgstr );													// ƒƒbƒZ[ƒWƒZƒbƒg
+	msgSet( msgstr );													// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒƒãƒˆ
 	for(;;){
-		keysym=getKey();												// ƒL[‚ğ“¾‚é
-		if( keysym==MKEY_ESC || keysym==0x03 ){							// ƒLƒƒƒ“ƒZƒ‹
+		keysym=getKey();												// ã‚­ãƒ¼ã‚’å¾—ã‚‹
+		if( keysym==MKEY_ESC || keysym==0x03 ){							// ã‚­ãƒ£ãƒ³ã‚»ãƒ«
 			break;
 		}
-		if( keysym=='n' || keysym=='N' ){								// ƒm[
-			res=YN_NO;													// ƒŠƒUƒ‹ƒg‚ğƒm[‚ÉƒZƒbƒg
+		if( keysym=='n' || keysym=='N' ){								// ãƒãƒ¼
+			res=YN_NO;													// ãƒªã‚¶ãƒ«ãƒˆã‚’ãƒãƒ¼ã«ã‚»ãƒƒãƒˆ
 			break;
 		}
-		if( keysym=='y' || keysym=='Y' ){								// ƒCƒGƒX
-			res=YN_YES;													// ƒŠƒUƒ‹ƒg‚ğƒCƒGƒX‚ÉƒZƒbƒg
+		if( keysym=='y' || keysym=='Y' ){								// ã‚¤ã‚¨ã‚¹
+			res=YN_YES;													// ãƒªã‚¶ãƒ«ãƒˆã‚’ã‚¤ã‚¨ã‚¹ã«ã‚»ãƒƒãƒˆ
 			break;
 		}
 	}
-	msgSet( "" );														// ƒƒbƒZ[ƒWƒNƒŠƒA
-	return( res );														// ƒŠƒUƒ‹ƒg‚ğ‚Á‚ÄƒŠƒ^[ƒ“
+	msgSet( "" );														// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒªã‚¢
+	return( res );														// ãƒªã‚¶ãƒ«ãƒˆã‚’æŒã£ã¦ãƒªã‚¿ãƒ¼ãƒ³
 }
 

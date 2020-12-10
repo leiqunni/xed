@@ -1,7 +1,7 @@
 /************************************************************************/
 /*																		*/
-/*	X-Window & Windows ƒeƒLƒXƒgƒGƒfƒBƒ^	by H.Watanabe					*/
-/*	Ver3.00	2009/04/04 13:49:05	ì¬ŠJn								*/
+/*	X-Window & Windows ãƒ†ã‚­ã‚¹ãƒˆã‚¨ãƒ‡ã‚£ã‚¿	by H.Watanabe					*/
+/*	Ver3.00	2009/04/04 13:49:05	ä½œæˆé–‹å§‹								*/
 /*																		*/
 /************************************************************************/
 
@@ -9,89 +9,89 @@
 #	define	MAIN_H
 
 #	ifdef	_WIN32
-#	include	<windows.h>													/* Windows ƒwƒbƒ_[ƒtƒ@ƒCƒ‹*/
+#	include	<windows.h>													/* Windows ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«*/
 #	else
 #		ifndef	CURSES
 #			include <X11/Xlib.h>
-#			include	"std/xsel.h"										/* ƒZƒŒƒNƒVƒ‡ƒ“ŠÇ—*/
+#			include	"std/xsel.h"										/* ã‚»ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ç®¡ç†*/
 #		else
 #			define	_XOPEN_SOURCE_EXTENDED	1
 #			include	<curses.h>
 #		endif
 #	endif
-#	include	<sys/stat.h>												/* ƒtƒ@ƒCƒ‹ƒXƒe[ƒ^ƒX*/
-#	include	"std/db2.h"													/* ƒvƒƒOƒ‰ƒ€“à”Ä—pƒf[ƒ^ƒx[ƒXƒVƒXƒeƒ€*/
-#	include	"std/lm.h"													/* ƒ‰ƒCƒ“ƒ}ƒbƒv*/
-#	include	"std/mkey.h"												/* ƒ}ƒ‹ƒ`ƒL[ŠÇ—*/
+#	include	<sys/stat.h>												/* ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹*/
+#	include	"std/db2.h"													/* ãƒ—ãƒ­ã‚°ãƒ©ãƒ å†…æ±ç”¨ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚·ã‚¹ãƒ†ãƒ */
+#	include	"std/lm.h"													/* ãƒ©ã‚¤ãƒ³ãƒãƒƒãƒ—*/
+#	include	"std/mkey.h"												/* ãƒãƒ«ãƒã‚­ãƒ¼ç®¡ç†*/
 
 /************************************************************************/
-/*	ƒ[ƒJƒ‹’è‹`														*/
+/*	ãƒ­ãƒ¼ã‚«ãƒ«å®šç¾©														*/
 /************************************************************************/
 
-#	define	CRTL			"xed Ver2.00"								/* ƒNƒŠƒG[ƒgƒc[ƒ‹–¼*/
-#	define	SKPSP(P)		((P)+strspn(P,"\t "))						/* ƒXƒy[ƒXAƒ^ƒu‚ÌƒXƒLƒbƒv*/
-#	define	CLAMP(X,L,H)	(((X)>(H))?(H):(((X)<(L))?(L):(X)))			/* ƒNƒ‰ƒ“ƒv*/
-#	define	RNGTSTB(C,L,H)	((unsigned char)((C)-(L))<=(unsigned char)((H)-(L)))				/* •„†–³‚µ‚Wƒrƒbƒg‚ÅƒŒƒ“ƒWƒ`ƒFƒbƒN‚ğ‚·‚é*/
+#	define	CRTL			"xed Ver2.00"								/* ã‚¯ãƒªã‚¨ãƒ¼ãƒˆãƒ„ãƒ¼ãƒ«å*/
+#	define	SKPSP(P)		((P)+strspn(P,"\t "))						/* ã‚¹ãƒšãƒ¼ã‚¹ã€ã‚¿ãƒ–ã®ã‚¹ã‚­ãƒƒãƒ—*/
+#	define	CLAMP(X,L,H)	(((X)>(H))?(H):(((X)<(L))?(L):(X)))			/* ã‚¯ãƒ©ãƒ³ãƒ—*/
+#	define	RNGTSTB(C,L,H)	((unsigned char)((C)-(L))<=(unsigned char)((H)-(L)))				/* ç¬¦å·ç„¡ã—ï¼˜ãƒ“ãƒƒãƒˆã§ãƒ¬ãƒ³ã‚¸ãƒã‚§ãƒƒã‚¯ã‚’ã™ã‚‹*/
 
 #	ifdef	_WIN32
-#		define	CLPBRDP		g_hwnd										/* ƒNƒŠƒbƒvƒ{[ƒh‚É•K—v‚Èî•ñ*/
+#		define	CLPBRDP		g_hwnd										/* ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«å¿…è¦ãªæƒ…å ±*/
 #		define	XColor		int
 #	else
 #		define	RGB(R,G,B)	((R<<16)+(G<<8)+(B))
 #		ifndef	CURSES
-#			define	CLPBRDP	g_dpyp										/* ƒNƒŠƒbƒvƒ{[ƒh‚É•K—v‚Èî•ñ*/
+#			define	CLPBRDP	g_dpyp										/* ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«å¿…è¦ãªæƒ…å ±*/
 #		else
-#			define	CLPBRDP	0											/* ƒNƒŠƒbƒvƒ{[ƒh‚É•K—v‚Èî•ñ*/
+#			define	CLPBRDP	0											/* ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«å¿…è¦ãªæƒ…å ±*/
 #			define	XColor	int
 #		endif
 #	endif
 
 	typedef struct{
 		XColor			col;											// XColor
-	}	stXCOL;															// XColor \‘¢‘Ì
+	}	stXCOL;															// XColor æ§‹é€ ä½“
 
-#	define	YN_CANCEL		0											/* ƒLƒƒƒ“ƒZƒ‹*/
-#	define	YN_NO			1											/* ƒm[*/
-#	define	YN_YES			2											/* ƒCƒGƒX*/
+#	define	YN_CANCEL		0											/* ã‚­ãƒ£ãƒ³ã‚»ãƒ«*/
+#	define	YN_NO			1											/* ãƒãƒ¼*/
+#	define	YN_YES			2											/* ã‚¤ã‚¨ã‚¹*/
 
-#	define	CR_BLACK		RGB(0x00,0x00,0x00)							/* •*/
-#	define	CR_WHITE		RGB(0xe0,0xe0,0xe0)							/* ”’*/
-#	define	CR_LB			RGB(0x88,0xa0,0xb8)							/* ƒ‰ƒCƒgƒuƒ‹[*/
-#	define	CR_LNO			RGB(0xa0,0xa0,0xa0)							/* s”Ô†*/
-#	define	CR_LNO_BK		RGB(0x28,0x28,0x28)							/* s”Ô†”wŒiF*/
-#	define	CR_MSG_BK		RGB(0x88,0xa0,0xbc)							/* ƒƒbƒZ[ƒW”wŒiF*/
-#	define	CR_MOD_BK		RGB(0x60,0x98,0xc0)							/* ƒ‚[ƒh”wŒiF*/
-#	define	CR_OVER			RGB(0xd0,0x30,0x30)							/* ã‘‚«ƒJ[ƒ\ƒ‹F*/
+#	define	CR_BLACK		RGB(0x00,0x00,0x00)							/* é»’*/
+#	define	CR_WHITE		RGB(0xe0,0xe0,0xe0)							/* ç™½*/
+#	define	CR_LB			RGB(0x88,0xa0,0xb8)							/* ãƒ©ã‚¤ãƒˆãƒ–ãƒ«ãƒ¼*/
+#	define	CR_LNO			RGB(0xa0,0xa0,0xa0)							/* è¡Œç•ªå·*/
+#	define	CR_LNO_BK		RGB(0x28,0x28,0x28)							/* è¡Œç•ªå·èƒŒæ™¯è‰²*/
+#	define	CR_MSG_BK		RGB(0x88,0xa0,0xbc)							/* ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸èƒŒæ™¯è‰²*/
+#	define	CR_MOD_BK		RGB(0x60,0x98,0xc0)							/* ãƒ¢ãƒ¼ãƒ‰èƒŒæ™¯è‰²*/
+#	define	CR_OVER			RGB(0xd0,0x30,0x30)							/* ä¸Šæ›¸ãã‚«ãƒ¼ã‚½ãƒ«è‰²*/
 
 #	define	CRTYP_WIN		0											/* 0d0a*/
 #	define	CRTYP_UNIX		1											/* 0a*/
 
 #	if	defined(_WIN32) || defined(__CYGWIN__)							/* WINDOWS*/
-#		define	CRTYP_DEFAULT	CRTYP_WIN								/* ƒfƒtƒHƒ‹ƒg‰üsƒ^ƒCƒv*/
+#		define	CRTYP_DEFAULT	CRTYP_WIN								/* ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæ”¹è¡Œã‚¿ã‚¤ãƒ—*/
 #	else
-#		define	CRTYP_DEFAULT	CRTYP_UNIX								/* ƒfƒtƒHƒ‹ƒg‰üsƒ^ƒCƒv*/
+#		define	CRTYP_DEFAULT	CRTYP_UNIX								/* ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæ”¹è¡Œã‚¿ã‚¤ãƒ—*/
 #	endif
 
 	typedef struct{
-		int					chgflg;										// •ÏXƒtƒ‰ƒO
-	}	stLIN;															// s\‘¢‘Ì
+		int					chgflg;										// å¤‰æ›´ãƒ•ãƒ©ã‚°
+	}	stLIN;															// è¡Œæ§‹é€ ä½“
 
 	typedef struct{
-		stDB				*lindbp;									// sDB
-		stLIN				*pgp;										// ƒy[ƒWæ“ª
-		int					pgxx, pgyy;									// ƒy[ƒWÀ•W
-		stLIN				*curp;										// •ÒW’†‚Ìs
-		int					curxx, curyy;								// ƒJ[ƒ\ƒ‹À•W
-		int					chgflg;										// •ÏXƒtƒ‰ƒO
-		int					cuttyp;										// ƒJƒbƒgƒ^ƒCƒv( 0:s, 1:‹éŒ` )
-		stLIN				*cutpgp;									// ƒJƒbƒgæ“ªƒy[ƒWƒ|ƒCƒ“ƒ^
-		stLIN				*cutcurp;									// ƒJƒbƒgæ“ªƒ|ƒCƒ“ƒ^
-		int					cutpgxx, cutpgyy;							// ƒJƒbƒgæ“ªƒy[ƒWÀ•W
-		int					cutcurxx, cutcuryy;							// ƒJƒbƒgæ“ªÀ•W
-		int					crtyp;										// ‰üsƒ^ƒCƒv
-		int					statflg;									// ‚P‚É‚È‚Á‚Ä‚¢‚ê‚Î st —LŒø
-		struct stat			st;											// ƒtƒ@ƒCƒ‹ƒXƒe[ƒ^ƒX
-	}	stCTX;															// ƒRƒ“ƒeƒLƒXƒg\‘¢‘Ì
+		stDB				*lindbp;									// è¡ŒDB
+		stLIN				*pgp;										// ãƒšãƒ¼ã‚¸å…ˆé ­
+		int					pgxx, pgyy;									// ãƒšãƒ¼ã‚¸åº§æ¨™
+		stLIN				*curp;										// ç·¨é›†ä¸­ã®è¡Œ
+		int					curxx, curyy;								// ã‚«ãƒ¼ã‚½ãƒ«åº§æ¨™
+		int					chgflg;										// å¤‰æ›´ãƒ•ãƒ©ã‚°
+		int					cuttyp;										// ã‚«ãƒƒãƒˆã‚¿ã‚¤ãƒ—( 0:è¡Œ, 1:çŸ©å½¢ )
+		stLIN				*cutpgp;									// ã‚«ãƒƒãƒˆå…ˆé ­ãƒšãƒ¼ã‚¸ãƒã‚¤ãƒ³ã‚¿
+		stLIN				*cutcurp;									// ã‚«ãƒƒãƒˆå…ˆé ­ãƒã‚¤ãƒ³ã‚¿
+		int					cutpgxx, cutpgyy;							// ã‚«ãƒƒãƒˆå…ˆé ­ãƒšãƒ¼ã‚¸åº§æ¨™
+		int					cutcurxx, cutcuryy;							// ã‚«ãƒƒãƒˆå…ˆé ­åº§æ¨™
+		int					crtyp;										// æ”¹è¡Œã‚¿ã‚¤ãƒ—
+		int					statflg;									// ï¼‘ã«ãªã£ã¦ã„ã‚Œã° st æœ‰åŠ¹
+		struct stat			st;											// ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+	}	stCTX;															// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ§‹é€ ä½“
 
 #	ifdef	MAIN_CPP
 #		define	EXTERN
@@ -101,71 +101,71 @@
 
 #	ifdef	_WIN32
 
-	EXTERN	HWND			g_hwnd;										// ƒƒCƒ“ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-	EXTERN	HFONT			g_hfont;									// ƒtƒHƒ“ƒgƒnƒ“ƒhƒ‹
-	EXTERN	HDC				g_hdc;										// ƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg
+	EXTERN	HWND			g_hwnd;										// ãƒ¡ã‚¤ãƒ³ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
+	EXTERN	HFONT			g_hfont;									// ãƒ•ã‚©ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ«
+	EXTERN	HDC				g_hdc;										// ãƒ‡ãƒã‚¤ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 
 #	else
 
 #		ifndef	CURSES
 
-	EXTERN	Display			*g_dpyp;									// ƒfƒBƒXƒvƒŒƒC
-	EXTERN	Window			g_win;										// ƒEƒBƒ“ƒhƒE
-	EXTERN	Colormap		g_cmap;										// ƒJƒ‰[ƒ}ƒbƒv
-	EXTERN	GC				g_gc;										// ‚f‚b
-	EXTERN	XFontSet		g_fs;										// “ú–{Œêƒ‚[ƒhƒtƒHƒ“ƒg
+	EXTERN	Display			*g_dpyp;									// ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤
+	EXTERN	Window			g_win;										// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
+	EXTERN	Colormap		g_cmap;										// ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ—
+	EXTERN	GC				g_gc;										// ï¼§ï¼£
+	EXTERN	XFontSet		g_fs;										// æ—¥æœ¬èªãƒ¢ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ³ãƒˆ
 	EXTERN	XIM				g_im;
 	EXTERN	XIMStyle		g_style;
 	EXTERN	XIC				g_ic;
-	EXTERN	int				g_fep;										// FEPƒI[ƒvƒ“ƒtƒ‰ƒO
+	EXTERN	int				g_fep;										// FEPã‚ªãƒ¼ãƒ—ãƒ³ãƒ•ãƒ©ã‚°
 	EXTERN	unsigned long	g_tim;
-	EXTERN	int				g_fntascent;								// ƒtƒHƒ“ƒgƒAƒZƒ“ƒg
-	EXTERN	int				g_jp;										// “ú–{Œêƒ‚[ƒhƒtƒ‰ƒO
-	EXTERN	stXSEL			*g_xselp;									// ƒZƒŒƒNƒVƒ‡ƒ“ŠÇ—
+	EXTERN	int				g_fntascent;								// ãƒ•ã‚©ãƒ³ãƒˆã‚¢ã‚»ãƒ³ãƒˆ
+	EXTERN	int				g_jp;										// æ—¥æœ¬èªãƒ¢ãƒ¼ãƒ‰ãƒ•ãƒ©ã‚°
+	EXTERN	stXSEL			*g_xselp;									// ã‚»ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ç®¡ç†
 
 #		endif
 
 #	endif
 
-	EXTERN	int				g_optv;										// ƒo[ƒ{[ƒYƒ‚[ƒh( ‚¤‚é‚³‚¢ƒ‚[ƒh )
-	EXTERN	int				g_optz;										// ƒfƒoƒbƒOƒ‚[ƒh
-	EXTERN	int				g_optn;										// *.bak ƒtƒ@ƒCƒ‹‚ğì¬‚µ‚È‚¢
-	EXTERN	int				g_optl;										// [EOL]‚ğ•\¦‚µ‚È‚¢
-	EXTERN	int				g_opte;										// [EOF]‚ğ•\¦‚µ‚È‚¢
-	EXTERN	char			g_optfn[256];								// ƒtƒHƒ“ƒg–¼
-	EXTERN	int				g_optfx, g_optfy;							// ƒtƒHƒ“ƒgƒTƒCƒY
-	EXTERN	int				g_optxn, g_optyn;							// ‰æ–Ê‰¡•Ac•( ƒLƒƒƒ‰ƒNƒ^À•W )
-	EXTERN	int				g_optlno;									// s”Ô†w’è
-	EXTERN	int				g_optu;										// ‹­§‰pŒêƒ‚[ƒh
+	EXTERN	int				g_optv;										// ãƒãƒ¼ãƒœãƒ¼ã‚ºãƒ¢ãƒ¼ãƒ‰( ã†ã‚‹ã•ã„ãƒ¢ãƒ¼ãƒ‰ )
+	EXTERN	int				g_optz;										// ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰
+	EXTERN	int				g_optn;										// *.bak ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãªã„
+	EXTERN	int				g_optl;										// [EOL]ã‚’è¡¨ç¤ºã—ãªã„
+	EXTERN	int				g_opte;										// [EOF]ã‚’è¡¨ç¤ºã—ãªã„
+	EXTERN	char			g_optfn[256];								// ãƒ•ã‚©ãƒ³ãƒˆå
+	EXTERN	int				g_optfx, g_optfy;							// ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
+	EXTERN	int				g_optxn, g_optyn;							// ç”»é¢æ¨ªå¹…ã€ç¸¦å¹…( ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™ )
+	EXTERN	int				g_optlno;									// è¡Œç•ªå·æŒ‡å®š
+	EXTERN	int				g_optu;										// å¼·åˆ¶è‹±èªãƒ¢ãƒ¼ãƒ‰
 
-	EXTERN	int				g_frmxw, g_frmyw;							// ƒEƒBƒ“ƒhƒEƒtƒŒ[ƒ€ƒTƒCƒY
-	EXTERN	int				g_fxw, g_fyw;								// ƒtƒHƒ“ƒg‰¡•Ac•
-	EXTERN	int				g_xw, g_yw;									// ƒEƒBƒ“ƒhƒE‰¡•Ac•
-	EXTERN	int				g_xxw, g_yyw;								// ƒEƒBƒ“ƒhƒE‰¡•Ac•( ƒLƒƒƒ‰ƒNƒ^À•WŒn )
-	EXTERN	int				g_txxc, g_tyyc, g_txxd, g_tyyd;				// ƒeƒLƒXƒgÀ•W( ƒLƒƒƒ‰ƒNƒ^À•WŒn )
-	EXTERN	stDB			*g_ctxdbp;									// ƒRƒ“ƒeƒLƒXƒgDB
-	EXTERN	stCTX			*g_ctxp;									// ƒRƒ“ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^
-	EXTERN	stMKEY			*g_mkeyp;									// ƒ}ƒ‹ƒ`ƒL[ŠÇ—\‘¢‘Ìƒ|ƒCƒ“ƒ^
-	EXTERN	int				g_flgend;									// I—¹ƒtƒ‰ƒO
-	EXTERN	int				g_tabstp;									// ƒ^ƒuƒXƒeƒbƒv
-	EXTERN	int				g_tabdsp;									// ƒ^ƒu•\¦ƒtƒ‰ƒO
-	EXTERN	int				g_lnosiz;									// s”Ô†•\¦ƒTƒCƒY
-	EXTERN	int				g_cursw;									// ƒJ[ƒ\ƒ‹•\¦ƒXƒCƒbƒ`
-	EXTERN	int				g_flgeof;									// [EOF]•\¦ƒtƒ‰ƒO
-	EXTERN	int				g_flgcr;									// ƒLƒƒƒŠƒbƒWƒŠƒ^[ƒ“•\¦ƒtƒ‰ƒO
-	EXTERN	int				g_flgins;									// ƒCƒ“ƒT[ƒgƒtƒ‰ƒO
-	EXTERN	int				g_flgl2c;									// ¬•¶š‚©‚ç‘å•¶š•ÏŠ·ƒtƒ‰ƒO
-	EXTERN	char			g_msgstr[256];								// ƒƒbƒZ[ƒW•¶š—ñ
-	EXTERN	char			g_cutlin[LM_MAX+4];							// ˆêsƒJƒbƒgƒoƒbƒtƒ@
-	EXTERN	int				g_flglbl;									// ŒŸõA’uŠ·‚Ìƒ‰ƒxƒ‹”F¯
-	EXTERN	int				g_flgh;										// s”Ô†‚P‚Ui•\¦
-	EXTERN	int				g_flgwld;									// ŒŸõA’uŠ·‚ÌƒƒCƒ‹ƒhƒJ[ƒh—LŒøƒtƒ‰ƒO
-	EXTERN	int				g_flgc2l;									// ŒŸõ‚Ì‘å•¶š¬•¶š‹æ•Êƒtƒ‰ƒO
-	EXTERN	char			g_reporg[256], g_repnew[256];				// ’uŠ·•¶š—ñ
-	EXTERN	int				g_scdbiz;									// ŒŸõ•\¦ƒTƒCƒY
-	EXTERN	stDB			*g_macalcdbp;								// ƒL[ƒ}ƒNƒ“o˜^DB
-	EXTERN	stDB			*g_macrsvdbp;								// ƒL[ƒ}ƒNƒ—\–ñDB
-	EXTERN	stDB			*g_macexedbp;								// ƒL[ƒ}ƒNƒÀsDB
+	EXTERN	int				g_frmxw, g_frmyw;							// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ•ãƒ¬ãƒ¼ãƒ ã‚µã‚¤ã‚º
+	EXTERN	int				g_fxw, g_fyw;								// ãƒ•ã‚©ãƒ³ãƒˆæ¨ªå¹…ã€ç¸¦å¹…
+	EXTERN	int				g_xw, g_yw;									// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¨ªå¹…ã€ç¸¦å¹…
+	EXTERN	int				g_xxw, g_yyw;								// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æ¨ªå¹…ã€ç¸¦å¹…( ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™ç³» )
+	EXTERN	int				g_txxc, g_tyyc, g_txxd, g_tyyd;				// ãƒ†ã‚­ã‚¹ãƒˆåº§æ¨™( ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åº§æ¨™ç³» )
+	EXTERN	stDB			*g_ctxdbp;									// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆDB
+	EXTERN	stCTX			*g_ctxp;									// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	EXTERN	stMKEY			*g_mkeyp;									// ãƒãƒ«ãƒã‚­ãƒ¼ç®¡ç†æ§‹é€ ä½“ãƒã‚¤ãƒ³ã‚¿
+	EXTERN	int				g_flgend;									// çµ‚äº†ãƒ•ãƒ©ã‚°
+	EXTERN	int				g_tabstp;									// ã‚¿ãƒ–ã‚¹ãƒ†ãƒƒãƒ—
+	EXTERN	int				g_tabdsp;									// ã‚¿ãƒ–è¡¨ç¤ºãƒ•ãƒ©ã‚°
+	EXTERN	int				g_lnosiz;									// è¡Œç•ªå·è¡¨ç¤ºã‚µã‚¤ã‚º
+	EXTERN	int				g_cursw;									// ã‚«ãƒ¼ã‚½ãƒ«è¡¨ç¤ºã‚¹ã‚¤ãƒƒãƒ
+	EXTERN	int				g_flgeof;									// [EOF]è¡¨ç¤ºãƒ•ãƒ©ã‚°
+	EXTERN	int				g_flgcr;									// ã‚­ãƒ£ãƒªãƒƒã‚¸ãƒªã‚¿ãƒ¼ãƒ³è¡¨ç¤ºãƒ•ãƒ©ã‚°
+	EXTERN	int				g_flgins;									// ã‚¤ãƒ³ã‚µãƒ¼ãƒˆãƒ•ãƒ©ã‚°
+	EXTERN	int				g_flgl2c;									// å°æ–‡å­—ã‹ã‚‰å¤§æ–‡å­—å¤‰æ›ãƒ•ãƒ©ã‚°
+	EXTERN	char			g_msgstr[256];								// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ–‡å­—åˆ—
+	EXTERN	char			g_cutlin[LM_MAX+4];							// ä¸€è¡Œã‚«ãƒƒãƒˆãƒãƒƒãƒ•ã‚¡
+	EXTERN	int				g_flglbl;									// æ¤œç´¢ã€ç½®æ›æ™‚ã®ãƒ©ãƒ™ãƒ«èªè­˜
+	EXTERN	int				g_flgh;										// è¡Œç•ªå·ï¼‘ï¼–é€²è¡¨ç¤º
+	EXTERN	int				g_flgwld;									// æ¤œç´¢ã€ç½®æ›æ™‚ã®ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰æœ‰åŠ¹ãƒ•ãƒ©ã‚°
+	EXTERN	int				g_flgc2l;									// æ¤œç´¢æ™‚ã®å¤§æ–‡å­—å°æ–‡å­—åŒºåˆ¥ãƒ•ãƒ©ã‚°
+	EXTERN	char			g_reporg[256], g_repnew[256];				// ç½®æ›æ–‡å­—åˆ—
+	EXTERN	int				g_scdbiz;									// æ¤œç´¢è¡¨ç¤ºã‚µã‚¤ã‚º
+	EXTERN	stDB			*g_macalcdbp;								// ã‚­ãƒ¼ãƒã‚¯ãƒ­ç™»éŒ²DB
+	EXTERN	stDB			*g_macrsvdbp;								// ã‚­ãƒ¼ãƒã‚¯ãƒ­äºˆç´„DB
+	EXTERN	stDB			*g_macexedbp;								// ã‚­ãƒ¼ãƒã‚¯ãƒ­å®Ÿè¡ŒDB
 
 #	undef	EXTERN
 
