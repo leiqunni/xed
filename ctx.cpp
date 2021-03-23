@@ -1,177 +1,177 @@
 /************************************************************************/
 /*																		*/
-/*	ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç®¡ç†			by H.Watanabe							*/
-/*	Ver1.00	2009/04/04 13:49:05	ä½œæˆé–‹å§‹								*/
+/*	ƒRƒ“ƒeƒLƒXƒgŠÇ—			by H.Watanabe							*/
+/*	Ver1.00	2009/04/04 13:49:05	ì¬ŠJn								*/
 /*																		*/
 /************************************************************************/
 
-#	include	<stdio.h>													/* æ¨™æº–å…¥å‡ºåŠ›é–¢æ•°*/
-#	include	<string.h>													/* æ¨™æº–æ–‡å­—åˆ—é–¢æ•°*/
-#	include	"main.h"													/* ãƒ¡ã‚¤ãƒ³ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«*/
+#	include	<stdio.h>													/* •W€“üo—ÍŠÖ”*/
+#	include	<string.h>													/* •W€•¶š—ñŠÖ”*/
+#	include	"main.h"													/* ƒƒCƒ“ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹*/
 
 /************************************************************************/
-/*	æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’èª¿ã¹ã‚‹													*/
+/*	‰üsƒR[ƒh‚ğ’²‚×‚é													*/
 /************************************************************************/
 
 static int	crtypchk( const char *fnamp ){
 
-	int		crtyp=CRTYP_DEFAULT;										// æ”¹è¡Œã‚¿ã‚¤ãƒ—
-	FILE	*fp;														// ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿
-	int		iosiz;														// å…¥å‡ºåŠ›ã‚µã‚¤ã‚º
-	char	txta[4096];													// ãƒãƒƒãƒ•ã‚¡
-	void	*txtp;														// ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	int		crtyp=CRTYP_DEFAULT;										// ‰üsƒ^ƒCƒv
+	FILE	*fp;														// ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
+	int		iosiz;														// “üo—ÍƒTƒCƒY
+	char	txta[4096];													// ƒoƒbƒtƒ@
+	void	*txtp;														// ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^
 
-	fp=fopen( fnamp, "rb" );											// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
-	if( fp ){															// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³æˆåŠŸ
-		while( !feof( fp ) ){											// ãƒ•ã‚¡ã‚¤ãƒ«ãŒçµ‚ç«¯ã§ãªã„é–“ãƒ«ãƒ¼ãƒ—
-			iosiz=fread( txta, 1, sizeof(txta), fp );					// ãƒ•ã‚¡ã‚¤ãƒ«ãƒªãƒ¼ãƒ‰
-			if( !iosiz ){												// ãƒ•ã‚¡ã‚¤ãƒ«çµ‚äº†
+	fp=fopen( fnamp, "rb" );											// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+	if( fp ){															// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“¬Œ÷
+		while( !feof( fp ) ){											// ƒtƒ@ƒCƒ‹‚ªI’[‚Å‚È‚¢ŠÔƒ‹[ƒv
+			iosiz=fread( txta, 1, sizeof(txta), fp );					// ƒtƒ@ƒCƒ‹ƒŠ[ƒh
+			if( !iosiz ){												// ƒtƒ@ƒCƒ‹I—¹
 				break;
 			}
-			txtp=memchr( txta, 0x0d, iosiz );							// 0x0dã‚’æ¤œç´¢
-			if( txtp ){													// 0x0dãŒè¦‹ã¤ã‹ã£ãŸ
+			txtp=memchr( txta, 0x0d, iosiz );							// 0x0d‚ğŒŸõ
+			if( txtp ){													// 0x0d‚ªŒ©‚Â‚©‚Á‚½
 				crtyp=CRTYP_WIN;										// Windows
 				break;
 			}
-			txtp=memchr( txta, 0x0a, iosiz );							// 0x0aã‚’æ¤œç´¢
-			if( txtp ){													// 0x0aãŒè¦‹ã¤ã‹ã£ãŸ
+			txtp=memchr( txta, 0x0a, iosiz );							// 0x0a‚ğŒŸõ
+			if( txtp ){													// 0x0a‚ªŒ©‚Â‚©‚Á‚½
 				crtyp=CRTYP_UNIX;										// Linux
 				break;
 			}
 		}
-		fclose( fp );													// ãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
+		fclose( fp );													// ƒtƒ@ƒCƒ‹ƒNƒ[ƒY
 	}
-	return( crtyp );													// æ”¹è¡Œã‚¿ã‚¤ãƒ—ã‚’æŒã£ã¦ãƒªã‚¿ãƒ¼ãƒ³
+	return( crtyp );													// ‰üsƒ^ƒCƒv‚ğ‚Á‚ÄƒŠƒ^[ƒ“
 }
 
 /************************************************************************/
-/*	ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚ªãƒ¼ãƒ—ãƒ³												*/
+/*	ƒRƒ“ƒeƒLƒXƒgƒI[ƒvƒ“												*/
 /************************************************************************/
 
 stCTX	*ctxOpen( const char *fnamp ){
 
-	stCTX	*ctxp;														// ç®¡ç†æ§‹é€ ä½“
-	FILE	*fp;														// ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿
-	char	txta[0x4000], *txtp;										// ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ•ã‚¡ã€ãƒã‚¤ãƒ³ã‚¿
-	int		crflg=1;													// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãƒ•ãƒ©ã‚°
+	stCTX	*ctxp;														// ŠÇ—\‘¢‘Ì
+	FILE	*fp;														// ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
+	char	txta[0x4000], *txtp;										// ƒeƒLƒXƒgƒoƒbƒtƒ@Aƒ|ƒCƒ“ƒ^
+	int		crflg=1;													// ‰üsƒR[ƒhƒtƒ‰ƒO
 
-	ctxp=(stCTX*)dbAlc( g_ctxdbp, fnamp, 0 );							// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç™»éŒ²
-	ctxp->lindbp=dbOpen( DBSIZ_VAR, sizeof(stLIN), 0, 0x10000 );		// è¡ŒDBã‚ªãƒ¼ãƒ—ãƒ³
-	fp=fopen( fnamp, "r" );												// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
-	if( fp ){															// ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³æˆåŠŸ
-		while( !feof( fp ) ){											// ãƒ•ã‚¡ã‚¤ãƒ«çµ‚ç«¯ã«é”ã—ãªã„é–“ãƒ«ãƒ¼ãƒ—
-			if( !fgets( txta, sizeof(txta), fp ) ){						// ãƒãƒƒãƒ•ã‚¡ã¯ç„¡åŠ¹
+	ctxp=(stCTX*)dbAlc( g_ctxdbp, fnamp, 0 );							// ƒRƒ“ƒeƒLƒXƒg“o˜^
+	ctxp->lindbp=dbOpen( DBSIZ_VAR, sizeof(stLIN), 0, 0x10000 );		// sDBƒI[ƒvƒ“
+	fp=fopen( fnamp, "r" );												// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+	if( fp ){															// ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“¬Œ÷
+		while( !feof( fp ) ){											// ƒtƒ@ƒCƒ‹I’[‚É’B‚µ‚È‚¢ŠÔƒ‹[ƒv
+			if( !fgets( txta, sizeof(txta), fp ) ){						// ƒoƒbƒtƒ@‚Í–³Œø
 				continue;
 			}
-			txtp=strpbrk( txta, "\x1a" );								// [EOF]æ¤œç´¢
-			if( txtp ){													// è¦‹ã¤ã‹ã£ãŸ
-				*txtp=0;												// [EOF]ã‚¯ãƒªã‚¢
+			txtp=strpbrk( txta, "\x1a" );								// [EOF]ŒŸõ
+			if( txtp ){													// Œ©‚Â‚©‚Á‚½
+				*txtp=0;												// [EOF]ƒNƒŠƒA
 			}
-			txtp=strpbrk( txta, "\r\n" );								// æ”¹è¡Œã‚³ãƒ¼ãƒ‰æ¤œç´¢
-			if( txtp ){													// è¦‹ã¤ã‹ã£ãŸ
-				*txtp=0;												// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚¯ãƒªã‚¢
+			txtp=strpbrk( txta, "\r\n" );								// ‰üsƒR[ƒhŒŸõ
+			if( txtp ){													// Œ©‚Â‚©‚Á‚½
+				*txtp=0;												// ‰üsƒR[ƒhƒNƒŠƒA
 			}
-			crflg=( txtp!=0 );											// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãŒç„¡ã‘ã‚Œã°ï¼‘ã«ãªã‚‹
-			linAlcStr( ctxp->lindbp, txta );							// è¡Œç™»éŒ²
+			crflg=( txtp!=0 );											// ‰üsƒR[ƒh‚ª–³‚¯‚ê‚Î‚P‚É‚È‚é
+			linAlcStr( ctxp->lindbp, txta );							// s“o˜^
 		}
-		fclose( fp );													// ãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
+		fclose( fp );													// ƒtƒ@ƒCƒ‹ƒNƒ[ƒY
 
 #	ifdef	unix
-		if( !stat( fnamp , &ctxp->st ) ){								// ãƒ•ã‚¡ã‚¤ãƒ«ã¯å­˜åœ¨ã—ã¦ã„ã‚‹
-			ctxp->statflg=1;											// ãƒ•ã‚¡ã‚¤ãƒ«å­˜åœ¨ãƒ•ãƒ©ã‚°ã‚»ãƒƒãƒˆ
+		if( !stat( fnamp , &ctxp->st ) ){								// ƒtƒ@ƒCƒ‹‚Í‘¶İ‚µ‚Ä‚¢‚é
+			ctxp->statflg=1;											// ƒtƒ@ƒCƒ‹‘¶İƒtƒ‰ƒOƒZƒbƒg
 		}
 #	endif
 
 	}
-	if( crflg ){														// æœ€çµ‚è¡Œã«æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãŒå­˜åœ¨ã—ãŸ
-		linAlcStr( ctxp->lindbp, "" );									// [EOF]è¡Œç™»éŒ²
+	if( crflg ){														// ÅIs‚É‰üsƒR[ƒh‚ª‘¶İ‚µ‚½
+		linAlcStr( ctxp->lindbp, "" );									// [EOF]s“o˜^
 	}
-	ctxp->crtyp=crtypchk( fnamp );										// æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’èª¿ã¹ã‚‹
+	ctxp->crtyp=crtypchk( fnamp );										// ‰üsƒR[ƒh‚ğ’²‚×‚é
 	ctxp->pgp=ctxp->curp=(stLIN*)dbTop( ctxp->lindbp );
-	return( ctxp );														// ç®¡ç†æ§‹é€ ä½“ã‚’æŒã£ã¦ãƒªã‚¿ãƒ¼ãƒ³
+	return( ctxp );														// ŠÇ—\‘¢‘Ì‚ğ‚Á‚ÄƒŠƒ^[ƒ“
 }
 
 /************************************************************************/
-/*	ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ­ãƒ¼ã‚º												*/
+/*	ƒRƒ“ƒeƒLƒXƒgƒNƒ[ƒY												*/
 /************************************************************************/
 
 void	ctxClose( stCTX *ctxp ){
 
-	stCTX	*p, *nxtp;													// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	stCTX	*p, *nxtp;													// ƒRƒ“ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^
 
-	if( ctxp ){															// ä¸€ã¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå‰Šé™¤
-		if( ctxp==g_ctxp ){												// ã‚¯ãƒ­ãƒ¼ã‚ºã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã®ã¯ã‚«ãƒ¬ãƒ³ãƒˆ
-			g_ctxp=(stCTX*)dbNxt( g_ctxp );								// ã‚«ãƒ¬ãƒ³ãƒˆã¯æ¬¡
-			if( !g_ctxp ){												// æ¬¡ã¯ç„¡ã‹ã£ãŸ
-				g_ctxp=(stCTX*)dbTop( g_ctxdbp );						// ã‚«ãƒ¬ãƒ³ãƒˆã¯å…ˆé ­( NULL ã®å ´åˆã‚‚ã‚ã‚‹ã®ã§æ³¨æ„ )
+	if( ctxp ){															// ˆê‚Â‚ÌƒRƒ“ƒeƒLƒXƒgíœ
+		if( ctxp==g_ctxp ){												// ƒNƒ[ƒY‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚Ì‚ÍƒJƒŒƒ“ƒg
+			g_ctxp=(stCTX*)dbNxt( g_ctxp );								// ƒJƒŒƒ“ƒg‚ÍŸ
+			if( !g_ctxp ){												// Ÿ‚Í–³‚©‚Á‚½
+				g_ctxp=(stCTX*)dbTop( g_ctxdbp );						// ƒJƒŒƒ“ƒg‚Íæ“ª( NULL ‚Ìê‡‚à‚ ‚é‚Ì‚Å’ˆÓ )
 			}
 		}
-		dbClose( ctxp->lindbp );										// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®è¡ŒDBç ´æ£„
-		dbFre( g_ctxdbp, ctxp );										// ç®¡ç†æ§‹é€ ä½“ãƒ¡ãƒ¢ãƒªé–‹æ”¾
-	}else{																// å…¨ã¦å‰Šé™¤
-		dbFOR2( g_ctxdbp, p, nxtp, stCTX* ){							// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç·å½“ã‚Šãƒ«ãƒ¼ãƒ—
-			ctxClose( p );												// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ­ãƒ¼ã‚º
+		dbClose( ctxp->lindbp );										// ƒRƒ“ƒeƒLƒXƒg‚ÌsDB”jŠü
+		dbFre( g_ctxdbp, ctxp );										// ŠÇ—\‘¢‘Ìƒƒ‚ƒŠŠJ•ú
+	}else{																// ‘S‚Äíœ
+		dbFOR2( g_ctxdbp, p, nxtp, stCTX* ){							// ƒRƒ“ƒeƒLƒXƒg‘“–‚èƒ‹[ƒv
+			ctxClose( p );												// ƒRƒ“ƒeƒLƒXƒgƒNƒ[ƒY
 		}
 	}
 }
 
 /************************************************************************/
-/*	ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚»ãƒ¼ãƒ–													*/
+/*	ƒRƒ“ƒeƒLƒXƒgƒZ[ƒu													*/
 /************************************************************************/
 
 int		ctxSave( const stCTX *ctxp ){
 
-	int		errn=0;														// ã‚¨ãƒ©ãƒ¼æ•°
-	char	*fnamp;														// ãƒ•ã‚¡ã‚¤ãƒ«åãƒã‚¤ãƒ³ã‚¿
-	char	baknam[256];												// ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«å
-	FILE	*fp;														// ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿
-	stLIN	*linp;														// è¡Œãƒã‚¤ãƒ³ã‚¿
-	char	*txtp;														// ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	int		errn=0;														// ƒGƒ‰[”
+	char	*fnamp;														// ƒtƒ@ƒCƒ‹–¼ƒ|ƒCƒ“ƒ^
+	char	baknam[256];												// ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹–¼
+	FILE	*fp;														// ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^
+	stLIN	*linp;														// sƒ|ƒCƒ“ƒ^
+	char	*txtp;														// ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^
 
-	fnamp=(char*)dbKEYADR( ctxp );										// ãƒ•ã‚¡ã‚¤ãƒ«å
-	if( !g_optn ){														// *.bak ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹
-		sprintf( baknam, "%s.bak", fnamp );								// ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«åä½œæˆ
-		remove( baknam );												// æ—§ãƒ•ã‚¡ã‚¤ãƒ«å‰Šé™¤
-		rename( fnamp, baknam );										// ãƒªãƒãƒ¼ãƒ 
+	fnamp=(char*)dbKEYADR( ctxp );										// ƒtƒ@ƒCƒ‹–¼
+	if( !g_optn ){														// *.bak ƒtƒ@ƒCƒ‹‚ğì¬‚·‚é
+		sprintf( baknam, "%s.bak", fnamp );								// ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹–¼ì¬
+		remove( baknam );												// ‹Œƒtƒ@ƒCƒ‹íœ
+		rename( fnamp, baknam );										// ƒŠƒl[ƒ€
 	}
-	fp=fopen( fnamp, "wb" );											// ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã‚ªãƒ¼ãƒ—ãƒ³
-	if( fp ){															// ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã‚ªãƒ¼ãƒ—ãƒ³æˆåŠŸ
-		dbFOR( ctxp->lindbp, linp, stLIN* ){							// å½¢ç·å½“ã‚Šãƒ«ãƒ¼ãƒ—
+	fp=fopen( fnamp, "wb" );											// ƒtƒ@ƒCƒ‹o—ÍƒI[ƒvƒ“
+	if( fp ){															// ƒtƒ@ƒCƒ‹o—ÍƒI[ƒvƒ“¬Œ÷
+		dbFOR( ctxp->lindbp, linp, stLIN* ){							// Œ`‘“–‚èƒ‹[ƒv
 			txtp=(char*)dbKEYADR( linp );
-			if( dbNxt( linp ) ){										// çµ‚ç«¯è¡Œã§ã¯ãªã„
+			if( dbNxt( linp ) ){										// I’[s‚Å‚Í‚È‚¢
 				if( ctxp->crtyp==CRTYP_UNIX ){							// UNIX
 					fprintf( fp, "%s\n", txtp );						// 0a
 				}else{													// WINDOWS
 					fprintf( fp, "%s\r\n", txtp );						// 0d0a
 				}
-			}else{														// çµ‚ç«¯è¡Œ
+			}else{														// I’[s
 				fprintf( fp, "%s", (char*)dbKEYADR( linp ) );
 			}
 		}
-		fclose( fp );													// ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã‚¯ãƒ­ãƒ¼ã‚º
+		fclose( fp );													// ƒtƒ@ƒCƒ‹o—ÍƒNƒ[ƒY
 #	ifdef	unix
-		if( ctxp->statflg ){											// å‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¦ã„ã‚‹
-			chmod( fnamp, ctxp->st.st_mode );							// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰å¤‰æ›´
+		if( ctxp->statflg ){											// ‘O‚Ìƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ä‚¢‚é
+			chmod( fnamp, ctxp->st.st_mode );							// ƒtƒ@ƒCƒ‹ƒ‚[ƒh•ÏX
 		}
 #	endif
 
 	}else{
-		errn++;															// ã‚¨ãƒ©ãƒ¼æ•°åŠ ç®—
+		errn++;															// ƒGƒ‰[”‰ÁZ
 	}
-	return( !errn );													// 0:ã‚¨ãƒ©ãƒ¼, 1:æ­£å¸¸çµ‚äº†
+	return( !errn );													// 0:ƒGƒ‰[, 1:³íI—¹
 }
 
 /************************************************************************/
-/*	ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒªãƒãƒ¼ãƒ 												*/
+/*	ƒRƒ“ƒeƒLƒXƒgƒŠƒl[ƒ€												*/
 /************************************************************************/
 
 stCTX	*ctxRename( stCTX *ctxp, const char *fnamp ){
 
-	stCTX	*newp;														// æ–°ã—ã„ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿
+	stCTX	*newp;														// V‚µ‚¢ƒRƒ“ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^
 
-	newp=(stCTX*)dbAlc( g_ctxdbp, fnamp, 0 );							// ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç™»éŒ²
-	memcpy( newp, ctxp, sizeof(stCTX) );								// æ—§æ§‹é€ ä½“ã‚’æ–°æ§‹é€ ä½“ã«ã‚³ãƒ”ãƒ¼
-	dbFre( g_ctxdbp, ctxp );											// æ—§ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç ´æ£„
-	return( newp );														// æ–°ã—ã„ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¤ãƒ³ã‚¿ã‚’æŒã£ã¦ãƒªã‚¿ãƒ¼ãƒ³
+	newp=(stCTX*)dbAlc( g_ctxdbp, fnamp, 0 );							// ƒRƒ“ƒeƒLƒXƒg“o˜^
+	memcpy( newp, ctxp, sizeof(stCTX) );								// ‹Œ\‘¢‘Ì‚ğV\‘¢‘Ì‚ÉƒRƒs[
+	dbFre( g_ctxdbp, ctxp );											// ‹ŒƒRƒ“ƒeƒLƒXƒg”jŠü
+	return( newp );														// V‚µ‚¢ƒRƒ“ƒeƒLƒXƒgƒ|ƒCƒ“ƒ^‚ğ‚Á‚ÄƒŠƒ^[ƒ“
 }
 

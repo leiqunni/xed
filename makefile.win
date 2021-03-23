@@ -140,3 +140,5 @@ o/std_txtdl$(OBJ): std/txtdl.c $(TXTDL_H)
 o/std_xsel$(OBJ): std/xsel.c $(READDB_H) $(XSEL_H)
 	$(CC) $(COPT) $(FO)std_xsel$(OBJ) -c std/xsel.c
 
+clean:
+	del /q o\*.* xed.exe
